@@ -35,6 +35,21 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -85,6 +100,20 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
+      ENV{INCLUDE}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\ATLMFC\\include"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt"
+        - "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"
   -
     kind: "message-v1"
     backtrace:
@@ -101,7 +130,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.8+a7a4d5af0 for .NET Framework
-      Build started 9/14/2025 3:26:26 PM.
+      Build started 9/14/2025 6:17:44 PM.
       
       Project "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\4.1.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -112,15 +141,15 @@ events:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
       ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
         CompilerIdCXX.vcxproj -> C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\4.1.1\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x86\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
@@ -130,7 +159,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.91
+      Time Elapsed 00:00:01.35
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -162,7 +191,21 @@ events:
     names:
       - "link"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -185,11 +228,30 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
     searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
-    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/link.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -240,6 +302,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
   -
     kind: "find-v1"
     backtrace:
@@ -262,7 +328,21 @@ events:
     names:
       - "lld-link"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -285,10 +365,56 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
     searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/lld-link"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.exe"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/lld-link"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/lld-link.com"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/lld-link.exe"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/lld-link"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/lld-link.com"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/lld-link.exe"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/lld-link"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/lld-link.com"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/lld-link.exe"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/lld-link"
@@ -355,9 +481,36 @@ events:
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/lld-link.com"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lld-link"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/lld-link"
     found: false
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -408,6 +561,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
   -
     kind: "find-v1"
     backtrace:
@@ -428,7 +585,21 @@ events:
     names:
       - "link"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -451,11 +622,30 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
     searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
-    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/link.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -506,6 +696,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
   -
     kind: "find-v1"
     backtrace:
@@ -526,7 +720,21 @@ events:
     names:
       - "mt"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -549,79 +757,57 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
     searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/mt"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.exe"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/mt.com"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/mt.exe"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/mt"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/mt.com"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/mt.exe"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/mt"
-      - "C:/Windows/System32/mt.com"
-      - "C:/Windows/System32/mt.exe"
-      - "C:/Windows/System32/mt"
-      - "C:/Windows/mt.com"
-      - "C:/Windows/mt.exe"
-      - "C:/Windows/mt"
-      - "C:/Windows/System32/wbem/mt.com"
-      - "C:/Windows/System32/wbem/mt.exe"
-      - "C:/Windows/System32/wbem/mt"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
-      - "C:/Windows/System32/OpenSSH/mt.com"
-      - "C:/Windows/System32/OpenSSH/mt.exe"
-      - "C:/Windows/System32/OpenSSH/mt"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt"
-      - "C:/Program Files/WindowsPowerShell/Scripts/mt.com"
-      - "C:/Program Files/WindowsPowerShell/Scripts/mt.exe"
-      - "C:/Program Files/WindowsPowerShell/Scripts/mt"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt.com"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt.exe"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt.com"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt.exe"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt"
-      - "C:/Program Files/Git/cmd/mt.com"
-      - "C:/Program Files/Git/cmd/mt.exe"
-      - "C:/Program Files/Git/cmd/mt"
-      - "C:/Program Files/dotnet/mt.com"
-      - "C:/Program Files/dotnet/mt.exe"
-      - "C:/Program Files/dotnet/mt"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.com"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/mt.com"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/mt.exe"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/mt"
-      - "C:/Program Files/CMake/bin/mt.com"
-      - "C:/Program Files/CMake/bin/mt.exe"
-      - "C:/Program Files/CMake/bin/mt"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/mt.com"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/mt.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/mt"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/mt.com"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/mt.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/mt"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/mt"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/mt.com"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/mt.exe"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/mt"
-    found: false
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/mt"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/mt"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/mt"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/mt"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/mt.com"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/mt.exe"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/mt"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/mt"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/mt"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.com"
+    found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -672,6 +858,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
   -
     kind: "find-v1"
     backtrace:
@@ -692,7 +882,21 @@ events:
     names:
       - "lib"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -715,11 +919,30 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
     searched_directories:
-      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.com"
-    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/lib.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/lib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -770,6 +993,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
   -
     kind: "find-v1"
     backtrace:
@@ -793,6 +1020,21 @@ events:
     names:
       - "rc"
     candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/x64/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/"
+      - "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/"
       - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/"
       - "C:/Windows/System32/"
@@ -814,8 +1056,11 @@ events:
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python311/"
       - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/vcpkg/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -829,114 +1074,52 @@ events:
       - "C:/Program Files (x86)/SlideShows/sbin/"
       - "C:/Program Files (x86)/SlideShows/"
     searched_directories:
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/rc.com"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/rc.exe"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/bin/rc"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/rc.com"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/rc.exe"
-      - "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/libnvvp/rc"
-      - "C:/Windows/System32/rc.com"
-      - "C:/Windows/System32/rc.exe"
-      - "C:/Windows/System32/rc"
-      - "C:/Windows/rc.com"
-      - "C:/Windows/rc.exe"
-      - "C:/Windows/rc"
-      - "C:/Windows/System32/wbem/rc.com"
-      - "C:/Windows/System32/wbem/rc.exe"
-      - "C:/Windows/System32/wbem/rc"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.com"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.exe"
-      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc"
-      - "C:/Windows/System32/OpenSSH/rc.com"
-      - "C:/Windows/System32/OpenSSH/rc.exe"
-      - "C:/Windows/System32/OpenSSH/rc"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc"
-      - "C:/Program Files/WindowsPowerShell/Scripts/rc.com"
-      - "C:/Program Files/WindowsPowerShell/Scripts/rc.exe"
-      - "C:/Program Files/WindowsPowerShell/Scripts/rc"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/rc.com"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/rc.exe"
-      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/rc"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/rc"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/rc.com"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/rc.exe"
-      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/rc"
-      - "C:/Program Files/Git/cmd/rc.com"
-      - "C:/Program Files/Git/cmd/rc.exe"
-      - "C:/Program Files/Git/cmd/rc"
-      - "C:/Program Files/dotnet/rc.com"
-      - "C:/Program Files/dotnet/rc.exe"
-      - "C:/Program Files/dotnet/rc"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.com"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.exe"
-      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/rc.com"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/rc.exe"
-      - "C:/Program Files/NVIDIA Corporation/Nsight Compute 2024.3.0/rc"
-      - "C:/Program Files/CMake/bin/rc.com"
-      - "C:/Program Files/CMake/bin/rc.exe"
-      - "C:/Program Files/CMake/bin/rc"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/rc.com"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/rc.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/Scripts/rc"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/rc.com"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/rc.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Python/Python311/rc"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/rc.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/rc.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/bin/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x86/rc"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/rc.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/rc.exe"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/rc"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/rc.com"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/rc.exe"
-      - "C:/Users/HP/AppData/Local/Microsoft/WindowsApps/rc"
-      - "C:/Program Files/bin/rc.com"
-      - "C:/Program Files/bin/rc.exe"
-      - "C:/Program Files/bin/rc"
-      - "C:/Program Files/sbin/rc.com"
-      - "C:/Program Files/sbin/rc.exe"
-      - "C:/Program Files/sbin/rc"
-      - "C:/Program Files/rc.com"
-      - "C:/Program Files/rc.exe"
-      - "C:/Program Files/rc"
-      - "C:/Program Files (x86)/bin/rc.com"
-      - "C:/Program Files (x86)/bin/rc.exe"
-      - "C:/Program Files (x86)/bin/rc"
-      - "C:/Program Files (x86)/sbin/rc.com"
-      - "C:/Program Files (x86)/sbin/rc.exe"
-      - "C:/Program Files (x86)/sbin/rc"
-      - "C:/Program Files (x86)/rc.com"
-      - "C:/Program Files (x86)/rc.exe"
-      - "C:/Program Files (x86)/rc"
-      - "C:/Program Files/CMake/bin/rc.com"
-      - "C:/Program Files/CMake/bin/rc.exe"
-      - "C:/Program Files/CMake/bin/rc"
-      - "C:/Program Files/CMake/sbin/rc.com"
-      - "C:/Program Files/CMake/sbin/rc.exe"
-      - "C:/Program Files/CMake/sbin/rc"
-      - "C:/Program Files/CMake/rc.com"
-      - "C:/Program Files/CMake/rc.exe"
-      - "C:/Program Files/CMake/rc"
-      - "C:/Program Files (x86)/SlideShows/bin/rc.com"
-      - "C:/Program Files (x86)/SlideShows/bin/rc.exe"
-      - "C:/Program Files (x86)/SlideShows/bin/rc"
-      - "C:/Program Files (x86)/SlideShows/sbin/rc.com"
-      - "C:/Program Files (x86)/SlideShows/sbin/rc.exe"
-      - "C:/Program Files (x86)/SlideShows/sbin/rc"
-      - "C:/Program Files (x86)/SlideShows/rc.com"
-      - "C:/Program Files (x86)/SlideShows/rc.exe"
-      - "C:/Program Files (x86)/SlideShows/rc"
-    found: false
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/VC/vcpackages/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/Roslyn/rc"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/rc.com"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/rc.exe"
+      - "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/rc"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/rc.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/rc.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/Team Tools/DiagnosticsHub/Collector/rc"
+      - "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.com"
+    found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn"
+        - "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v10.0A\\bin\\NETFX 4.8 Tools\\x64\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\FSharp\\Tools"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\DiagnosticsHub\\Collector"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\\\x64"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64"
+        - "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\bin"
         - "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6\\libnvvp"
         - "C:\\windows\\system32"
@@ -987,6 +1170,10 @@ events:
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64"
         - "C:\\Users\\HP\\AppData\\Local\\Microsoft\\WindowsApps\\"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/SlideShows"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -1002,51 +1189,51 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-uypdy4"
-      binary: "C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-uypdy4"
+      source: "C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-a0xaot"
+      binary: "C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-a0xaot"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-uypdy4'
+        Change Dir: 'C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-a0xaot'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_cc821.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_70672.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.8+a7a4d5af0 for .NET Framework
-        Build started 9/14/2025 3:26:27 PM.
+        Build started 9/14/2025 6:17:46 PM.
         
-        Project "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uypdy4\\cmTC_cc821.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a0xaot\\cmTC_70672.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_cc821.dir\\Debug\\".
+          Creating directory "cmTC_70672.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uypdy4\\Debug\\".
-          Creating directory "cmTC_cc821.dir\\Debug\\cmTC_cc821.tlog\\".
+          Creating directory "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a0xaot\\Debug\\".
+          Creating directory "cmTC_70672.dir\\Debug\\cmTC_70672.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_cc821.dir\\Debug\\cmTC_cc821.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_cc821.dir\\Debug\\cmTC_cc821.tlog\\unsuccessfulbuild".
+          Creating "cmTC_70672.dir\\Debug\\cmTC_70672.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_70672.dir\\Debug\\cmTC_70672.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_cc821.dir\\Debug\\\\" /Fd"cmTC_cc821.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35207.1 for x64
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_70672.dir\\Debug\\\\" /Fd"cmTC_70672.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35207.1 for x86
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_cc821.dir\\Debug\\\\" /Fd"cmTC_cc821.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Fo"cmTC_70672.dir\\Debug\\\\" /Fd"cmTC_70672.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uypdy4\\Debug\\cmTC_cc821.exe" /INCREMENTAL /ILK:"cmTC_cc821.dir\\Debug\\cmTC_cc821.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-uypdy4/Debug/cmTC_cc821.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-uypdy4/Debug/cmTC_cc821.lib" /MACHINE:X64  /machine:x64 cmTC_cc821.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_cc821.vcxproj -> C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uypdy4\\Debug\\cmTC_cc821.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x86\\link.exe /OUT:"C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a0xaot\\Debug\\cmTC_70672.exe" /INCREMENTAL /ILK:"cmTC_70672.dir\\Debug\\cmTC_70672.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-a0xaot/Debug/cmTC_70672.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/CMakeScratch/TryCompile-a0xaot/Debug/cmTC_70672.lib" /MACHINE:X86  /machine:X86 cmTC_70672.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_70672.vcxproj -> C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a0xaot\\Debug\\cmTC_70672.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_cc821.dir\\Debug\\cmTC_cc821.tlog\\unsuccessfulbuild".
-          Touching "cmTC_cc821.dir\\Debug\\cmTC_cc821.tlog\\cmTC_cc821.lastbuildstate".
-        Done Building Project "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-uypdy4\\cmTC_cc821.vcxproj" (default targets).
+          Deleting file "cmTC_70672.dir\\Debug\\cmTC_70672.tlog\\unsuccessfulbuild".
+          Touching "cmTC_70672.dir\\Debug\\cmTC_70672.tlog\\cmTC_70672.lastbuildstate".
+        Done Building Project "C:\\Users\\HP\\Desktop\\Codes\\oop_course_project\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a0xaot\\cmTC_70672.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.84
+        Time Elapsed 00:00:01.01
         
       exitCode: 0
   -
@@ -1059,7 +1246,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x86/link.exe
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -1074,7 +1261,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:3 (project)"
     message: |
-      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x86/link.exe" "-v"
       Microsoft (R) Incremental Linker Version 14.44.35207.1
       Copyright (C) Microsoft Corporation.  All rights reserved.
 ...

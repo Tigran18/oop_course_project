@@ -2,102 +2,69 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "../include/presentation.hpp"
+#include "../include/SlideShow.hpp"
 #include "../include/Tokenizer.hpp"
 
-using namespace std;
-
-struct SlideShow {
-    vector<string> slides;
-    size_t current = 0;
-    bool loaded = false;
-
-    void open(const string& path) {
-        fstream file(path, ios::in);
-        if (!file) {
-            cout << "[ERR] Cannot open file: " << path << "\n";
-            return;
-        }
-        slides.clear();
-        string line;
-        while (getline(file, line)) {
-            slides.push_back(line);
-        }
-        file.close();
-        if (slides.empty()) {
-            cout << "[WARN] File is empty\n";
-            return;
-        }
-        loaded = true;
-        current = 0;
-        show();
-    }
-
-    void show() {
-        if (!loaded) {
-            cout << "[ERR] No presentation loaded\n";
-            return;
-        }
-        cout << "[SLIDE] " << slides[current] << "\n";
-    }
-
-    void next() {
-        if (!loaded) {
-            cout << "[ERR] No presentation loaded\n";
-            return;
-        }
-        if (current < slides.size() - 1) {
-            current++;
-        } 
-        else {
-            cout << "[WARN] Already at last slide\n";
-        }
-        show();
-    }
-
-    void prev() {
-        if (!loaded) {
-            cout << "[ERR] No presentation loaded\n";
-            return;
-        }
-        if (current > 0) {
-            current--;
-        } 
-        else {
-            cout << "[WARN] Already at first slide\n";
-        }
-        show();
-    }
-};
-
 int main(int argc, char* argv[]) {
-    SlideShow ss;
+    std::vector<SlideShow> presentations;
+    size_t currentPresentation = 0;
     if (argc > 1) {
-        ss.open(argv[1]);
+        for (int i = 1; i < argc; ++i) {
+            SlideShow ss(argv[i]);
+            ss.open();
+            presentations.push_back(ss);
+        }
     }
     bool exitProgram = false;
-    cout << "=== PPTX CLI Slideshow ===\n";
-    cout << "Commands: next, prev, show, exit\n";
+    std::cout << "=== Multi-PPTX CLI Slideshow ===\n";
+    std::cout << "Commands: next, prev, show, nextfile, prevfile, exit\n";
     while (!exitProgram) {
-        cout << "> ";
-        string cmd;
-        cin >> cmd;
+        std::cout << "> ";
+        std::string cmd;
+        std::cin >> cmd;
+        if (presentations.empty()) {
+            if (cmd == "exit") {
+                exitProgram = true;
+                std::cout << "[INFO] Exiting slideshow\n";
+            }
+            else{
+                std::cout << "[ERR] No presentations loaded\n";
+            }
+            continue;
+        }
+        SlideShow& ss = presentations[currentPresentation];
         if (cmd == "next") {
             ss.next();
-        } 
+        }
         else if (cmd == "prev") {
             ss.prev();
-        } 
+        }
         else if (cmd == "show") {
             ss.show();
-        } 
+        }
+        else if (cmd == "nextfile") {
+            if (currentPresentation < presentations.size() - 1) {
+                currentPresentation++;
+                presentations[currentPresentation].show();
+            }
+            else {
+                std::cout << "[WARN] Already at last presentation\n";
+            }
+        }
+        else if (cmd == "prevfile") {
+            if (currentPresentation > 0) {
+                currentPresentation--;
+                presentations[currentPresentation].show();
+            }
+            else {
+                std::cout << "[WARN] Already at first presentation\n";
+            }
+        }
         else if (cmd == "exit") {
             exitProgram = true;
-            cout << "[INFO] Exiting slideshow\n";
-        } 
-        else {
-            cout << "[ERR] Unknown command: " << cmd << "\n";
+            std::cout << "[INFO] Exiting slideshow\n";
         }
+        else std::cout << "[ERR] Unknown command: " << cmd << "\n";
     }
     return 0;
 }
