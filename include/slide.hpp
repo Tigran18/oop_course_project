@@ -1,12 +1,14 @@
-#ifndef SLIDE_H
-#define SLIDE_H
+#pragma once
 
 #include <vector>
-#include "shape.hpp"
+#include "Shape.hpp"
 
-class slide {
+class Slide {
+private:
+    std::vector<Shape> shapes;
+
 public:
-    std::vector<shape> shapes;
+    void addShape(const Shape& shape);
+    void show() const;
+    bool isEmpty() const;
 };
-
-#endif // SLIDE_H

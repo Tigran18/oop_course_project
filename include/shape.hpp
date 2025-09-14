@@ -1,11 +1,16 @@
-#ifndef SHAPE_H
-#define SHAPE_H
+#pragma once
 
 #include <string>
+#include <iostream>
 
-struct shape {
-    std::string type;
-    std::string text;
+class Shape {
+private:
+    std::string name;
+    int x;
+    int y;
+
+public:
+    Shape(const std::string& name, int x, int y);
+
+    void draw() const;
 };
-
-#endif // SHAPE_H
