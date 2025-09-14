@@ -1,0 +1,10 @@
+^C:\USERS\HP\DESKTOP\CODES\OOP_COURSE_PROJECT\BUILD\CMAKEFILES\1167A16F98752CFB29F89931C5C71980\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HP/Desktop/Codes/oop_course_project -BC:/Users/HP/Desktop/Codes/oop_course_project/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/HP/Desktop/Codes/oop_course_project/build/SlideShows.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

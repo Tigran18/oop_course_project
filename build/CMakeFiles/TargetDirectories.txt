@@ -1,0 +1,3 @@
+C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/SlideShows.dir
+C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/ZERO_CHECK.dir
