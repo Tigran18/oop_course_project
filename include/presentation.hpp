@@ -4,9 +4,9 @@
 #include <vector>
 #include "slide.hpp"
 
-class Presentation {
+class presentation {
 public:
-    std::vector<Slide> slides;
+    std::vector<slide> slides;
 };
 
 #endif // PRESENTATION_H

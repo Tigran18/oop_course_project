@@ -4,9 +4,9 @@
 #include <vector>
 #include "shape.hpp"
 
-class Slide {
+class slide {
 public:
-    std::vector<Shape> shapes;
+    std::vector<shape> shapes;
 };
 
 #endif // SLIDE_H

@@ -3,7 +3,7 @@
 
 #include <string>
 
-struct Shape {
+struct shape {
     std::string type;
     std::string text;
 };
