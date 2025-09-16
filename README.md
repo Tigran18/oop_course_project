@@ -1,48 +1,62 @@
-Sure! Based on your project structure and functionality (CLI multi-PPTX slideshow with slide navigation), here’s a clear and professional `README.md` you can use:
-
-```markdown
 # OOP Course Project: Multi-PPTX CLI Slideshow
 
-This project is a **C++ command-line application** that allows you to open and navigate through multiple simulated PPTX presentations.  
-It is written in C++17 and demonstrates object-oriented programming concepts, file handling, and CLI interface design.
+This project is a **C++ command-line application** that simulates a slideshow for multiple presentations defined in text files. Each "presentation" file contains shapes positioned on slides, separated by `---`. The application demonstrates object-oriented programming principles, including classes for shapes, slides, slideshows, tokenizing input, and command parsing.
+
+It supports loading multiple files, navigating between slides and presentations, and displaying shape information via console output. Built with C++11+ features, it uses standard libraries for file I/O, string manipulation, and containers.
 
 ---
 
 ## **Project Structure**
 
 ```
-
-oop\_course\_project/
+oop_course_project/
 │
-├─ .vscode/                   # VSCode configuration files
+├─ .vscode/                   # VSCode configuration files (optional)
 ├─ build/                     # Build output folder
 ├─ include/
-│   ├─ presentation.hpp       # SlideShow struct declaration
-│   ├─ slide.hpp              # Optional Slide struct
-│   ├─ shape.hpp              # Optional Shape struct
-│   └─ Tokenizer.hpp          # Tokenizer class
+│   ├─ Shape.hpp              # Shape class declaration
+│   ├─ Slide.hpp              # Slide class declaration
+│   ├─ SlideShow.hpp          # SlideShow class declaration
+│   ├─ Tokenizer.hpp          # Tokenizer class declaration
+│   └─ CommandParser.hpp      # CommandParser class declaration
 ├─ src/
-│   ├─ main.cpp               # CLI program
-│   └─ Tokenizer.cpp          # Tokenizer implementation
-├─ CMakeLists.txt             # Build configuration
+│   ├─ Shape.cpp              # Shape implementation
+│   ├─ Slide.cpp              # Slide implementation
+│   ├─ SlideShow.cpp          # SlideShow implementation
+│   ├─ Tokenizer.cpp          # Tokenizer implementation
+│   ├─ CommandParser.cpp      # CommandParser implementation
+│   └─ main.cpp               # Main CLI program
+├─ CMakeLists.txt             # Build configuration (assumed for CMake build)
 └─ README.md                  # Project description
-
-````
+```
 
 ---
 
 ## **Features**
 
-- Open multiple PPTX files (simulated as text slides for now)  
-- Navigate slides:
-  - `next` → go to next slide
-  - `prev` → go to previous slide
-  - `show` → show current slide  
-- Navigate presentations:
-  - `nextfile` → go to next presentation
-  - `prevfile` → go to previous presentation  
-- Exit program with `exit` command  
-- Handles cases when no presentations are loaded
+- **Load Multiple Presentations**: Accepts multiple text files as command-line arguments, parsing them into slides with shapes.
+- **Slide Navigation**:
+  - `next`: Move to the next slide in the current presentation.
+  - `prev`: Move to the previous slide in the current presentation.
+  - `show`: Display the current slide's shapes.
+  - `goto <n>`: Jump to slide number `n` (1-based) in the current presentation.
+  - `goto <filename> <n>`: Jump to slide number `n` in the specified presentation (supports filenames with or without `./` prefix).
+- **Presentation Navigation**:
+  - `nextfile`: Switch to the next loaded presentation and show its current slide.
+  - `prevfile`: Switch to the previous loaded presentation and show its current slide.
+- **Help and Exit**:
+  - `help`: Display a list of available commands.
+  - `exit`: Exit the program.
+- **Input File Format**: Text files with lines like `ShapeName, x, y` for shapes on a slide, separated by `---` for new slides. Example:
+  ```
+  Circle, 10, 20
+  Square, 30, 40
+  ---
+  Triangle, 50, 60
+  Rectangle, 70, 80
+  ```
+- **Error Handling**: Graceful handling of invalid commands, slide numbers, filenames, and empty presentations.
+- **Prompt**: Dynamic CLI prompt showing current presentation filename and slide position (e.g., `[.\pp1.txt, Slide 1/2] > `).
 
 ---
 
@@ -50,64 +64,79 @@ oop\_course\_project/
 
 ### **Build**
 
+Use CMake to build the project:
+
 ```bash
 mkdir build
 cd build
 cmake ..
 cmake --build . --config Release
-````
+```
 
-This generates `SlideShows.exe` in `build/Release`.
+This generates `SlideShow.exe` (or `SlideShow` on Unix-like systems) in `build/Release`.
 
 ---
 
 ### **Run**
 
+Run the executable with one or more text files as arguments:
+
 ```bash
-# Open one or more presentations
-./SlideShows.exe slides1.pptx slides2.pptx
+.\Release\SlideShow.exe .\pp1.txt .\pp2.txt .\pp3.txt
 ```
 
-### **Commands**
-________________________________________________
-| Command    | Description                     |
-| ---------- | ------------------------------- |
-| `next`     | Move to next slide              |
-| ---------------------------------------------|
-| `prev`     | Move to previous slide          |
-|----------------------------------------------|
-| `show`     | Show current slide              |
-|----------------------------------------------|
-| `nextfile` | Switch to next presentation     |
-|----------------------------------------------|
-| `prevfile` | Switch to previous presentation |
-|----------------------------------------------|
-| `exit`     | Exit the program                |
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+- The program loads the files and enters an interactive CLI mode.
+- Type commands at the prompt and press Enter.
 
-> Note: Slides are currently simulated with placeholder text: `"filename - Slide N"`.
+### **Commands**
+
+
+| Command              | Description |
+|----------------------|-------------|
+| `next`               | Move to the next slide in the current presentation. |
+| `prev`               | Move to the previous slide in the current presentation. |
+| `show`               | Display the current slide's shapes (e.g., "Drawing shape: Circle at (10, 20)"). |
+| `nextfile`           | Switch to the next presentation and show its current slide. |
+| `prevfile`           | Switch to the previous presentation and show its current slide. |
+| `goto <filename> <n>`| Jump to slide number `n` (1-based) in the specified presentation (e.g., `goto pp1.txt 2` or `goto .\pp1.txt 2`). |
+| `goto <n>`           | Jump to slide number `n` (1-based) in the current presentation. |
+| `help`               | Show the list of available commands. |
+| `exit`               | Exit the slideshow. |
+
+> Notes:
+> - Commands are case-insensitive.
+> - Invalid commands or arguments show error messages (e.g., unknown command, invalid slide number).
+> - If a filename is not found in `goto`, it lists available presentations for reference.
 
 ---
 
 ## **Development Notes**
 
-* The `SlideShow` struct is declared in `include/presentation.hpp`.
-* `main.cpp` handles CLI logic and uses `SlideShow` objects.
-* `Tokenizer` is prepared for parsing slide content (future feature).
-* The project uses **CMake** for cross-platform building.
+- **Classes and Components**:
+  - `Shape`: Represents a shape with name and position (x, y).
+  - `Slide`: Contains a vector of shapes and methods to add/show them.
+  - `SlideShow`: Manages slides for a single file, with navigation methods (next, prev, gotoSlide).
+  - `Tokenizer`: Splits lines by delimiter (e.g., comma) for parsing shape data, with trimming.
+  - `CommandParser`: Tokenizes and parses CLI input, validates commands, and normalizes paths.
+- **Dependencies**: Standard C++ libraries (`<iostream>`, `<fstream>`, `<string>`, `<vector>`, `<map>`, `<algorithm>`, `<cctype>`, `<sstream>`).
+- **Build System**: CMake for cross-platform compilation. Assumes source files in `src/` and headers in `include/`.
+- **Error Logging**: Uses console output with prefixes like `[INFO]`, `[WARN]`, `[ERR]` for messages.
+- **Path Normalization**: Filenames are normalized (lowercase, `/` separators, strip `./` prefix) for case-insensitive matching.
 
 ---
 
 ## **Future Improvements**
 
-* Support actual `.pptx` file parsing
-* Add slide content and shapes (`slide.hpp` + `shape.hpp`)
-* Implement text formatting and images
-* GUI support using Qt or similar library
+- **Real PPTX Support**: Integrate a library like OpenXML or libpptx to parse actual `.pptx` files.
+- **Advanced Commands**: Add `search` for shapes, `edit` to modify slides interactively, or `save` to export changes.
+- **GUI Integration**: Extend to a graphical interface using SFML, Qt, or SDL for visual rendering of shapes.
+- **Shape Enhancements**: Add more properties (e.g., color, size) and rendering options.
+- **Performance**: Optimize for large files with lazy loading of slides.
+- **Testing**: Add unit tests using Google Test or Catch2 for classes like Tokenizer and CommandParser.
 
 ---
 
 ## **Author**
 
-Tigran Davtyan
+Tigran Davtyan  
 Bachelor's student at NPUA, OOP course project
