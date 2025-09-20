@@ -21,13 +21,16 @@ void displayHelp() {
 }
 
 int main(int argc, char* argv[]) {
+    // If you think like this then it is better to keep vector of SlideShow objects and a map of name to index
     std::map<std::string, SlideShow> presentations;
     std::vector<std::string> presentationOrder;
     std::string currentPresentation;
     if (argc > 1) {
         for (int i = 1; i < argc; ++i) {
+            // File path normalization is not command parsers responsibility, better to use std::filessystem instead
             std::string filename = CommandParser::normalizePath(argv[i]);
             SlideShow ss(argv[i]);
+            // Serialization/deserialization with specific format and in memory representation of the document are different concern areas
             ss.open();
             if (!ss.isEmpty()) {
                 presentations.emplace(filename, ss);
@@ -44,6 +47,7 @@ int main(int argc, char* argv[]) {
     while (!exitProgram) {
         if (!presentations.empty()) {
             try {
+                // Do not thin it is a good idea to print presentation file path each time like this
                 const SlideShow& ss = presentations.at(currentPresentation);
                 std::cout << "[" << ss.getFilename()
                           << ", Slide " << (ss.getCurrentSlideIndex() + 1)
@@ -63,6 +67,8 @@ int main(int argc, char* argv[]) {
             std::cout << "[INFO] EOF detected, exiting slideshow\n";
             break;
         }
+        // Command parsing method should be wholly self-contained, 
+        // it is not a good practice to seperate tokenization like this and control parser from outside   
         Command cmd = CommandParser::parse(CommandParser::tokenize(inputLine));
         if (!cmd.isValid && !cmd.name.empty()) {
             std::cout << "[ERR] Unknown command: " << cmd.name << "\n";
