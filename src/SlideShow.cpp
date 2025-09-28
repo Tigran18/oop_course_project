@@ -55,7 +55,8 @@ void SlideShow::open() {
                 int x = std::stoi(trim(tokens[1]));
                 int y = std::stoi(trim(tokens[2]));
                 currentSlide.addShape(Shape(name, x, y));
-            } catch (const std::exception& e) {
+            } 
+            catch (const std::exception& e) {
                 std::cout << "[WARN] Failed to parse line " << lineNumber << ": " << line << " (" << e.what() << ")\n";
             }
         }
@@ -66,8 +67,6 @@ void SlideShow::open() {
     currentIndex = 0;
     if (slides.empty()) {
         std::cout << "[INFO] No valid slides loaded from " << filename << "\n";
-    } else {
-        std::cout << "[INFO] Loaded " << slides.size() << " slides from " << filename << "\n";
     }
 }
 
@@ -85,7 +84,8 @@ void SlideShow::next() {
     if (currentIndex + 1 < slides.size()) {
         ++currentIndex;
         show();
-    } else {
+    } 
+    else {
         std::cout << "[WARN] Already at the last slide of " << filename << "\n";
     }
 }
@@ -94,7 +94,8 @@ void SlideShow::prev() {
     if (currentIndex > 0) {
         --currentIndex;
         show();
-    } else {
+    } 
+    else {
         std::cout << "[WARN] Already at the first slide of " << filename << "\n";
     }
 }

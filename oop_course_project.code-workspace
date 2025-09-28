@@ -73,7 +73,16 @@
 			"xtr1common": "cpp",
 			"xutility": "cpp",
 			"bit": "cpp",
-			"iosfwd": "cpp"
+			"iosfwd": "cpp",
+			"chrono": "cpp",
+			"codecvt": "cpp",
+			"filesystem": "cpp",
+			"forward_list": "cpp",
+			"iomanip": "cpp",
+			"map": "cpp",
+			"ratio": "cpp",
+			"set": "cpp",
+			"xtree": "cpp"
 		}
 	}
 }
