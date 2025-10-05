@@ -1,6 +1,6 @@
 #include "../include/Functions.hpp"
 
-std::string normalizePath(const std::string& path) {
+std::string utils::normalizePath(const std::string& path) {
     std::string normalized = path;
     std::transform(normalized.begin(), normalized.end(), normalized.begin(),
                    [](unsigned char c) { 
@@ -16,10 +16,14 @@ std::string normalizePath(const std::string& path) {
     return normalized;
 }
 
-std::string trim(const std::string& s) {
+std::string utils::trim(const std::string& s) {
     auto start = s.begin();
-    while (start != s.end() && std::isspace(static_cast<unsigned char>(*start))) ++start;
+    while (start != s.end() && std::isspace(static_cast<unsigned char>(*start))) {
+        ++start;
+    }
     auto end = s.end();
-    while (end != start && std::isspace(static_cast<unsigned char>(*(end - 1)))) --end;
+    while (end != start && std::isspace(static_cast<unsigned char>(*(end - 1)))) {
+        --end;
+    }
     return std::string(start, end);
 }

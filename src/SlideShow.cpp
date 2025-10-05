@@ -41,7 +41,7 @@ void SlideShow::open() {
             }
         } 
         else {
-            std::vector<std::string> tokens = Tokenizer::tokenize(line, ',');
+            std::vector<std::string> tokens = Tokenizer::tokenizeSlideShow(line, ',');
             if (tokens.size() != 3) {
                 std::cout << "[WARN] Ignoring invalid line " << lineNumber << ": " << line << "\n";
                 continue;

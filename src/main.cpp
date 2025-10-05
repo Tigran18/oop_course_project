@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     size_t currentIndex = 0;
     if(argc > 1) {
         for (int i = 1; i < argc; ++i) {
-            std::string normalizedPath = normalizePath(argv[i]);
+            std::string normalizedPath = utils::normalizePath(argv[i]);
             SlideShow ss(normalizedPath);
             ss.open();
             if (!ss.isEmpty()) {
@@ -48,30 +48,30 @@ int main(int argc, char* argv[]) {
     std::cout << "Type 'help' for a list of commands\n";
     bool exitProgram = false;
     while (!exitProgram) {
-    if (!slideshows.empty()) {
-        const SlideShow& ss = slideshows[currentIndex];;
-    } 
-    else {
-        std::cout << "[No presentations] > ";
-    }
-    Command cmd = CommandParser::parse(std::cin);
-    if (std::cin.eof()) {
-        std::cout << "\n[INFO] EOF detected\n";
-        break;
-    }
-    if (cmd.name == "help") {
-        displayHelp();
-        continue;
-    } 
-    else if (cmd.name == "exit") {
-        std::cout << "[INFO] Exiting slideshow\n";
-        break;
-    }
-    if (slideshows.empty()) {
-        std::cout << "[ERR] No presentations loaded\n";
-        continue;
-    }
-    SlideShow& ss = slideshows[currentIndex];
+        if (!slideshows.empty()) {
+            const SlideShow& ss = slideshows[currentIndex];;
+        } 
+        else {
+            std::cout << "[No presentations] > ";
+        }
+        Command cmd = CommandParser::parse(std::cin);
+        if (std::cin.eof()) {
+            std::cout << "\n[INFO] EOF detected\n";
+            break;
+        }
+        if (cmd.name == "help") {
+            displayHelp();
+            continue;
+        } 
+        else if (cmd.name == "exit") {
+            std::cout << "[INFO] Exiting slideshow\n";
+            break;
+        }
+        if (slideshows.empty()) {
+            std::cout << "[ERR] No presentations loaded\n";
+            continue;
+        }
+        SlideShow& ss = slideshows[currentIndex];
         try {
             if (cmd.name == "next") {
                 slideshows[currentIndex].next();
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
                     }
                 } 
                 else if (cmd.args.size() == 2) {
-                    std::string normalizedPath = normalizePath(cmd.args[0]);
+                    std::string normalizedPath = utils::normalizePath(cmd.args[0]);
                     try {
                         size_t slideNum = std::stoul(cmd.args[1]);
                         auto it = presentationIndex.find(normalizedPath);
@@ -126,7 +126,9 @@ int main(int argc, char* argv[]) {
                         else {
                             std::cout << "[ERR] Presentation not found: " << cmd.args[0] << "\n";
                             std::cout << "Available presentations: ";
-                            for (const auto& name : presentationOrder) std::cout << name << " ";
+                            for (const auto& name : presentationOrder) {
+                                std::cout << name << " ";
+                            }
                             std::cout << "\n";
                         }
                     } 
