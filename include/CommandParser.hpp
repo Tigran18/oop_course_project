@@ -1,25 +1,23 @@
 #pragma once
 
+#include <memory>
+#include <map>
 #include <string>
 #include <vector>
-#include <set>
 #include <istream>
+
 #include "Functions.hpp"
 #include "Tokenizer.hpp"
-
-struct Command {
-    std::string name;
-    std::vector<std::string> args;
-    bool isValid = false;
-
-    Command(const std::string& n, const std::vector<std::string>& a, bool valid = true)
-        : name(n), args(a), isValid(valid) {}
-};
+#include "ICommand.hpp"
+#include "SlideShow.hpp"
 
 class CommandParser {
 public:
-    static Command parse(std::istream& in);
-
-private:
-    static const std::set<std::string> validCommands;
+    static std::unique_ptr<ICommand> parse(std::istream& in,
+        SlideShow& currentSlideShow,
+        size_t& currentIndex,
+        std::vector<SlideShow>& slideshows,
+        std::map<std::string, size_t>& presentationIndex,
+        std::vector<std::string>& presentationOrder,
+        bool& exitProgram);
 };

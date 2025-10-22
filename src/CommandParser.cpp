@@ -1,33 +1,49 @@
 #include "../include/CommandParser.hpp"
 #include <algorithm>
 
-const std::set<std::string> CommandParser::validCommands = {
-    "next", "prev", "show", "nextfile", "prevfile", "exit", "help", "goto", "listfiles"
-};
+#include "CommandParser.hpp"
+#include "Tokenizer.hpp"
+#include "Commands.hpp"
+#include <algorithm>
 
-Command CommandParser::parse(std::istream& in) {
+std::unique_ptr<ICommand> CommandParser::parse(std::istream& in,
+    SlideShow& currentSlideShow,
+    size_t& currentIndex,
+    std::vector<SlideShow>& slideshows,
+    std::map<std::string, size_t>& presentationIndex,
+    std::vector<std::string>& presentationOrder,
+    bool& exitProgram)
+{
     std::string line;
-    std::getline(in, line);
-    if (in.eof()) {
-        return Command("", {}, false);
-    }
+    if (!std::getline(in, line)) return std::make_unique<EmptyCommand>();
     auto tokens = Tokenizer::tokenizeCommandLine(line);
-    if (tokens.empty()) {
-        return Command("", {}, false);
-    }
-    std::string command = tokens[0];
-    std::transform(command.begin(), command.end(), command.begin(),
-                   [](unsigned char c){ return std::tolower(c); });
-
-    if (validCommands.find(command) == validCommands.end()) {
-        return Command(command, {}, false);
-    }
+    if (tokens.empty()) return std::make_unique<EmptyCommand>();
+    std::string cmdName = tokens[0];
+    std::transform(cmdName.begin(), cmdName.end(), cmdName.begin(), ::tolower);
     std::vector<std::string> args(tokens.begin() + 1, tokens.end());
-    for (auto& arg : args) {
-        arg = utils::trim(arg);
+    if (cmdName == "next") {
+        return std::make_unique<NextCommand>(currentSlideShow);
     }
-    if (command == "goto" && (args.empty() || args.size() > 2)) {
-        return Command(command, args, false);
+    if (cmdName == "prev") {
+        return std::make_unique<PrevCommand>(currentSlideShow);
     }
-    return Command(command, args, true);
+    if (cmdName == "show") {
+        return std::make_unique<ShowCommand>(currentSlideShow);
+    }
+    if (cmdName == "nextfile") {
+        return std::make_unique<NextFileCommand>(currentIndex, slideshows);
+    }
+    if (cmdName == "prevfile") {
+        return std::make_unique<PrevFileCommand>(currentIndex, slideshows);
+    }
+    if (cmdName == "goto") {
+        return std::make_unique<GotoCommand>(currentIndex, slideshows, presentationIndex, presentationOrder, args);
+    }
+    if (cmdName == "help") {
+        return std::make_unique<HelpCommand>();
+    }
+    if (cmdName == "exit") {
+        return std::make_unique<ExitCommand>(exitProgram);
+    }
+    return std::make_unique<EmptyCommand>();
 }
