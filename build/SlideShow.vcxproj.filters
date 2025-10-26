@@ -4,6 +4,12 @@
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\CommandParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

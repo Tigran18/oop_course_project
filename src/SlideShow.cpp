@@ -81,6 +81,10 @@ void SlideShow::show() const {
 }
 
 void SlideShow::next() {
+    if(!this) {
+        std::cout << "No slides are loaded." << std::endl;
+        return;
+    }
     if (currentIndex + 1 < slides.size()) {
         ++currentIndex;
         show();
@@ -91,6 +95,10 @@ void SlideShow::next() {
 }
 
 void SlideShow::prev() {
+    if(!this) {
+        std::cout << "No slides are loaded." << std::endl;
+        return;
+    }
     if (currentIndex > 0) {
         --currentIndex;
         show();
