@@ -11,13 +11,13 @@
 #include "ICommand.hpp"
 #include "SlideShow.hpp"
 
+extern std::vector<SlideShow> slideshows;
+extern std::map<std::string, size_t> presentationIndex;
+extern std::vector<std::string> presentationOrder;
+extern size_t currentIndex;
+
 class CommandParser {
 public:
-    static std::unique_ptr<ICommand> parse(std::istream& in,
-        SlideShow& currentSlideShow,
-        size_t& currentIndex,
-        std::vector<SlideShow>& slideshows,
-        std::map<std::string, size_t>& presentationIndex,
-        std::vector<std::string>& presentationOrder,
-        bool& exitProgram);
+    static std::unique_ptr<ICommand> parse(std::istream& in
+    );
 };

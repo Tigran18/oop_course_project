@@ -353,6 +353,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\CommandParser.cpp" />
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Commands.cpp" />
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Controller.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Functions.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\ICommand.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Shape.cpp" />

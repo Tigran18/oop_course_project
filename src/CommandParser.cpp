@@ -6,29 +6,26 @@
 #include "Commands.hpp"
 #include <algorithm>
 
-std::unique_ptr<ICommand> CommandParser::parse(std::istream& in,
-    SlideShow& currentSlideShow,
-    size_t& currentIndex,
-    std::vector<SlideShow>& slideshows,
-    std::map<std::string, size_t>& presentationIndex,
-    std::vector<std::string>& presentationOrder,
-    bool& exitProgram)
-{
+std::unique_ptr<ICommand> CommandParser::parse(std::istream& in){
     std::string line;
-    if (!std::getline(in, line)) return std::make_unique<EmptyCommand>();
+    if (!std::getline(in, line)) {
+        return std::make_unique<EmptyCommand>();
+    }
     auto tokens = Tokenizer::tokenizeCommandLine(line);
-    if (tokens.empty()) return std::make_unique<EmptyCommand>();
+    if (tokens.empty()) {
+        return std::make_unique<EmptyCommand>();
+    }
     std::string cmdName = tokens[0];
     std::transform(cmdName.begin(), cmdName.end(), cmdName.begin(), ::tolower);
     std::vector<std::string> args(tokens.begin() + 1, tokens.end());
     if (cmdName == "next") {
-        return std::make_unique<NextCommand>(currentSlideShow);
+        return std::make_unique<NextCommand>(slideshows[currentIndex]);
     }
     if (cmdName == "prev") {
-        return std::make_unique<PrevCommand>(currentSlideShow);
+        return std::make_unique<PrevCommand>(slideshows[currentIndex]);
     }
     if (cmdName == "show") {
-        return std::make_unique<ShowCommand>(currentSlideShow);
+        return std::make_unique<ShowCommand>(slideshows[currentIndex]);
     }
     if (cmdName == "nextfile") {
         return std::make_unique<NextFileCommand>(currentIndex, slideshows);
@@ -43,7 +40,7 @@ std::unique_ptr<ICommand> CommandParser::parse(std::istream& in,
         return std::make_unique<HelpCommand>();
     }
     if (cmdName == "exit") {
-        return std::make_unique<ExitCommand>(exitProgram);
+        return std::make_unique<ExitCommand>();
     }
     return std::make_unique<EmptyCommand>();
 }
