@@ -1,73 +1,25 @@
 #include "../include/SlideShow.hpp"
-#include "../include/Tokenizer.hpp"
+#include "../include/Serializer.hpp"
 #include <iostream>
-#include <fstream>
-#include <algorithm>
 
-SlideShow::SlideShow(const std::string& filename) : currentIndex(0), filename(filename) {}
-
-static std::string trim(const std::string& s) {
-    auto start = s.begin();
-    while (start != s.end() && std::isspace(static_cast<unsigned char>(*start))) {
-        ++start;
-    }
-    auto end = s.end();
-    while (end != start && std::isspace(static_cast<unsigned char>(*(end - 1)))) {
-        --end;
-    }
-    return std::string(start, end);
-}
+SlideShow::SlideShow(const std::string& fn) : filename(fn) {}
 
 void SlideShow::open() {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        std::cout << "[ERR] Could not open file: " << filename << "\n";
-        return;
-    }
     slides.clear();
-    Slide currentSlide;
-    std::string line;
-    size_t lineNumber = 0;
-    while (std::getline(file, line)) {
-        ++lineNumber;
-        line = trim(line);
-        if (line.empty()) {
-            continue;
-        }
-        if (line == "---") {
-            if (!currentSlide.isEmpty()) {
-                slides.push_back(currentSlide);
-                currentSlide = Slide();
-            }
-        } 
-        else {
-            std::vector<std::string> tokens = Tokenizer::tokenizeSlideShow(line, ',');
-            if (tokens.size() != 3) {
-                std::cout << "[WARN] Ignoring invalid line " << lineNumber << ": " << line << "\n";
-                continue;
-            }
-            try {
-                std::string name = trim(tokens[0]);
-                if (name.empty()) {
-                    std::cout << "[WARN] Ignoring line " << lineNumber << ": Empty shape name\n";
-                    continue;
-                }
-                int x = std::stoi(trim(tokens[1]));
-                int y = std::stoi(trim(tokens[2]));
-                currentSlide.addShape(Shape(name, x, y));
-            } 
-            catch (const std::exception& e) {
-                std::cout << "[WARN] Failed to parse line " << lineNumber << ": " << line << " (" << e.what() << ")\n";
-            }
-        }
-    }
-    if (!currentSlide.isEmpty()) {
-        slides.push_back(currentSlide);
-    }
     currentIndex = 0;
-    if (slides.empty()) {
-        std::cout << "[INFO] No valid slides loaded from " << filename << "\n";
+    std::string sessionPath = filename + ".bin";
+    std::vector<SlideShow> tmp;
+    std::map<std::string, size_t> idx;
+    std::vector<std::string> ord;
+    size_t dummy = 0;
+    if (Serializer::load(tmp, idx, ord, dummy, sessionPath)) {
+        auto it = idx.find(filename);
+        if (it != idx.end() && it->second < tmp.size()) {
+            *this = std::move(tmp[it->second]);
+            return;
+        }
     }
+    std::cout << "[INFO] Created new in-memory presentation: " << filename << "\n";
 }
 
 void SlideShow::show() const {
@@ -81,28 +33,28 @@ void SlideShow::show() const {
 }
 
 void SlideShow::next() {
-    if(!this) {
-        std::cout << "No slides are loaded." << std::endl;
-        return;
+    if (slides.empty()) { 
+        std::cout << "[ERR] No slides in this presentation.\n"; 
+        return; 
     }
-    if (currentIndex + 1 < slides.size()) {
-        ++currentIndex;
-        show();
-    } 
+    if (currentIndex + 1 < slides.size()) { 
+        ++currentIndex; 
+        show(); 
+    }
     else {
         std::cout << "[WARN] Already at the last slide of " << filename << "\n";
     }
 }
 
 void SlideShow::prev() {
-    if(!this) {
-        std::cout << "No slides are loaded." << std::endl;
-        return;
+    if (slides.empty()) { 
+        std::cout << "[ERR] No slides in this presentation.\n"; 
+        return; 
     }
-    if (currentIndex > 0) {
-        --currentIndex;
-        show();
-    } 
+    if (currentIndex > 0) { 
+        --currentIndex; 
+        show(); 
+    }
     else {
         std::cout << "[WARN] Already at the first slide of " << filename << "\n";
     }
@@ -110,10 +62,34 @@ void SlideShow::prev() {
 
 void SlideShow::gotoSlide(size_t slideNumber) {
     if (slideNumber == 0 || slideNumber > slides.size()) {
-        std::cout << "[ERR] Invalid slide number: " << slideNumber 
+        std::cout << "[ERR] Invalid slide number: " << slideNumber
                   << " (must be between 1 and " << slides.size() << ")\n";
         return;
     }
     currentIndex = slideNumber - 1;
     show();
+}
+
+const std::vector<Slide>& SlideShow::getSlides() const { 
+    return slides; 
+}
+
+std::vector<Slide>& SlideShow::getSlides() { 
+    return slides; 
+}
+
+size_t SlideShow::getCurrentIndex() const { 
+    return currentIndex; 
+}
+
+void SlideShow::setCurrentIndex(size_t idx) { 
+    currentIndex = idx; 
+}
+
+const std::string& SlideShow::getFilename() const { 
+    return filename; 
+}
+
+bool SlideShow::isEmpty() const { 
+    return slides.empty(); 
 }

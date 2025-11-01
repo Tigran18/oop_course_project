@@ -1,19 +1,18 @@
 #include "../include/Functions.hpp"
+#include <algorithm>
+#include <cctype>
 
 std::string utils::normalizePath(const std::string& path) {
-    std::string normalized = path;
-    std::transform(normalized.begin(), normalized.end(), normalized.begin(),
-                   [](unsigned char c) { 
-        return std::tolower(c); 
-    });
-    std::replace(normalized.begin(), normalized.end(), '\\', '/');
-    if (normalized.find("./") == 0) {
-        normalized.erase(0, 2);
-    } 
-    else if (normalized.find(".\\") == 0) {
-        normalized.erase(0, 2);
+    std::string n = path;
+    std::transform(n.begin(), n.end(), n.begin(), ::tolower);
+    std::replace(n.begin(), n.end(), '\\', '/');
+    if (n.find("./") == 0) {
+        n.erase(0, 2);
     }
-    return normalized;
+    else if (n.find(".\\") == 0) {
+        n.erase(0, 2);
+    }
+    return n;
 }
 
 std::string utils::trim(const std::string& s) {
