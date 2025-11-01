@@ -1,16 +1,18 @@
 #pragma once
-
 #include <string>
-#include <iostream>
 
 class Shape {
 private:
     std::string name;
-    int x;
-    int y;
-
+    int x, y;
 public:
-    Shape(const std::string& name, int x, int y);
+    Shape(const std::string& n, int xx, int yy);
 
     void draw() const;
+
+    const std::string& getName() const;
+
+    int getX() const;
+
+    int getY() const;
 };

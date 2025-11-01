@@ -1,5 +1,0 @@
-Circle,10,20
-Square,30,40
----
-Triangle,50,60
-Rectangle,70,80

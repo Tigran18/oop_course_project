@@ -1,66 +1,45 @@
 #include "../include/Tokenizer.hpp"
+#include <cctype>
 
-std::vector<std::string> Tokenizer::tokenizeCommandLine(const std::string& input) {
-    std::vector<std::string> tokens;
-    std::string token;
+std::vector<Token> Tokenizer::tokenizeCommandLine(const std::string& input) {
+    std::vector<Token> tokens;
+    std::string current;
     bool inQuotes = false;
     char quoteChar = '\0';
     for (char c : input) {
         if (c == '"' || c == '\'') {
             if (inQuotes && c == quoteChar) {
+                current.push_back(c);
+                tokens.emplace_back(TokenType::QUOTED_STRING, std::move(current));
+                current.clear();
                 inQuotes = false;
-                if (!token.empty()) { 
-                    tokens.push_back(token); 
-                    token.clear(); 
+            } else if (!inQuotes) {
+                if (!current.empty()) {
+                    tokens.emplace_back(TokenType::LITERAL, std::move(current));
+                    current.clear();
                 }
-            } 
-            else if (!inQuotes) {
                 inQuotes = true;
                 quoteChar = c;
+                current.push_back(c);
             } 
             else {
-                token += c;
+                current.push_back(c);
             }
         } 
         else if (std::isspace(static_cast<unsigned char>(c)) && !inQuotes) {
-            if (!token.empty()) { 
-                tokens.push_back(token); 
-                token.clear(); 
+            if (!current.empty()) {
+                TokenType t = (tokens.empty() ? TokenType::COMMAND : TokenType::LITERAL);
+                tokens.emplace_back(t, std::move(current));
+                current.clear();
             }
         } 
         else {
-            token += c;
+            current.push_back(c);
         }
     }
-    if (!token.empty()) {
-        tokens.push_back(token);
-    }
-    return tokens;
-}
-
-std::vector<std::string> Tokenizer::tokenizeSlideShow(const std::string& input, char delimiter) {
-    std::vector<std::string> tokens;
-    std::string current;
-    bool lastWasDelimiter = false;
-
-    for (char ch : input) {
-        if (ch == delimiter) {
-            if (!current.empty()) {
-                tokens.push_back(utils::trim(current));
-                current.clear();
-            }
-            lastWasDelimiter = true;
-        } else {
-            current.push_back(ch);
-            lastWasDelimiter = false;
-        }
-    }
-
     if (!current.empty()) {
-        tokens.push_back(utils::trim(current));
-    } else if (lastWasDelimiter && !tokens.empty()) {
-        tokens.push_back("");
+        TokenType t = (tokens.empty() ? TokenType::COMMAND : TokenType::LITERAL);
+        tokens.emplace_back(t, std::move(current));
     }
-
     return tokens;
 }

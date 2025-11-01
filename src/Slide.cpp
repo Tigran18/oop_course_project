@@ -7,8 +7,8 @@ void Slide::addShape(const Shape& shape) {
 
 void Slide::show() const {
     std::cout << "Slide contains " << shapes.size() << " shapes:\n";
-    for (size_t i = 0; i < shapes.size(); ++i) {
-        shapes[i].draw();
+    for (const auto& s : shapes) {
+        s.draw();
     }
 }
 
@@ -16,3 +16,10 @@ bool Slide::isEmpty() const {
     return shapes.empty();
 }
 
+const std::vector<Shape>& Slide::getShapes() const { 
+    return shapes; 
+}
+
+std::vector<Shape>& Slide::getShapes() { 
+    return shapes; 
+}

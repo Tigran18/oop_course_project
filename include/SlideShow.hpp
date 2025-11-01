@@ -1,36 +1,28 @@
 #pragma once
-
-#include <vector>
-#include <string>
 #include "Slide.hpp"
+#include <string>
+#include <vector>
 
 class SlideShow {
+private:
+    std::vector<Slide> slides;
+    size_t currentIndex = 0;
+    std::string filename;
+
 public:
     explicit SlideShow(const std::string& filename);
+
     void open();
     void show() const;
     void next();
     void prev();
     void gotoSlide(size_t slideNumber);
-    bool isEmpty() const 
-    { 
-        return slides.empty(); 
-    }
-    size_t getSlideCount() const 
-    { 
-        return slides.size(); 
-    }
-    size_t getCurrentSlideIndex() const 
-    { 
-        return currentIndex; 
-    }
-    const std::string& getFilename() const 
-    { 
-        return filename; 
-    }
 
-private:
-    std::vector<Slide> slides;
-    size_t currentIndex;
-    std::string filename;
+    const std::vector<Slide>& getSlides() const;
+    std::vector<Slide>& getSlides();
+    size_t getCurrentIndex() const;
+    void   setCurrentIndex(size_t idx);
+    const std::string& getFilename() const;
+
+    bool isEmpty() const;
 };

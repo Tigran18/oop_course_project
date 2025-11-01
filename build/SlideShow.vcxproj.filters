@@ -16,6 +16,9 @@
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\ICommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Serializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -23,6 +26,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\SlideShow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Token.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Tokenizer.cpp">
