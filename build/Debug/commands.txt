@@ -1,5 +1,4 @@
 create slideshow MyPresentation
-add slide "Hello World" 100 100
-add slide image MyImage "C:\Users\HP\Downloads\ChatGPT Image Nov 9, 2025, 08_54_21 PM.png"
+add slide image "MyImage" 100 100 "C:\Users\HP\Downloads\Nkar.png"
 autosave on
 exit

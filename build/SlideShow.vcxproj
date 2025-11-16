@@ -413,13 +413,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Commands.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Controller.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\ICommand.cpp" />
-    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\PPTXExporter.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\PPTXSerializer.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Shape.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Slide.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\SlideShow.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Token.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Tokenizer.cpp" />
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\lodepng.cpp" />
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\main.cpp" />
   </ItemGroup>
   <ItemGroup />

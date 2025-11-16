@@ -13,9 +13,6 @@
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\ICommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\PPTXExporter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\PPTXSerializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -32,6 +29,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\Tokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\lodepng.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\HP\Desktop\Codes\oop_course_project\src\main.cpp">

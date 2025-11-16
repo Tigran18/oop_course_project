@@ -53,7 +53,7 @@ std::unique_ptr<ICommand> CommandParser::parse(std::istream& in) {
         return std::unique_ptr<ICommand>(new CommandOpen(ctrl, args));
     }
     if (cmd == "save") {
-        return std::unique_ptr<ICommand>(new CommandSave(ctrl, args));
+        return std::unique_ptr<ICommand>(new CommandSave(args[0]));
     }
     if (cmd == "autosave") {
         return std::unique_ptr<ICommand>(new CommandAutoSave(ctrl, args));
@@ -93,8 +93,8 @@ std::unique_ptr<ICommand> CommandParser::parse(std::istream& in) {
     if (cmd == "prev") {
         return std::unique_ptr<ICommand>(new CommandPrev(ctrl.getCurrentSlideshow()));
     }
-    if (cmd == "show") {
-        return std::unique_ptr<ICommand>(new CommandShow(ctrl.getCurrentSlideshow()));
+    if (cmd == "preview") {
+        return std::make_unique<CommandPreview>(ctrl);
     }
     if (cmd == "undo") {
         return std::unique_ptr<ICommand>(new CommandUndo(ctrl));
