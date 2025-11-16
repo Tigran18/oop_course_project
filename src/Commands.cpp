@@ -10,10 +10,6 @@ void CommandExit::execute() {
     std::exit(EXIT_SUCCESS);
 }
 
-bool CommandExit::shouldExit() const { 
-    return true; 
-}
-
 void CommandEmpty::execute() {
 
 }
