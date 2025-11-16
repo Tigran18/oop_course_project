@@ -1,4 +1,0 @@
-C:\Users\HP\Desktop\Codes\oop_course_project\build\Debug\zip.dll
-C:\Users\HP\Desktop\Codes\oop_course_project\build\Debug\bz2.dll
-C:\Users\HP\Desktop\Codes\oop_course_project\build\Debug\zlib1.dll
-C:\Users\HP\Desktop\Codes\oop_course_project\build\SlideShow.dir\Debug\SlideShow.vcxproj.Up2Date

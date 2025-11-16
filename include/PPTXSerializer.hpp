@@ -1,26 +1,21 @@
 #pragma once
-#include <vector>
+#include "SlideShow.hpp"
 #include <string>
+#include <vector>
 #include <map>
-
-class SlideShow;
-
-enum class LoadResult { 
-    SUCCESS, 
-    NOT_FOUND, 
-    CORRUPTED, 
-    IO_ERROR 
-};
 
 class PPTXSerializer {
 public:
+    // Save slideshows to a valid PPTX using template.pptx
     static bool save(const std::vector<SlideShow>& slideshows,
                      const std::vector<std::string>& order,
-                     const std::string& pptxPath);
+                     const std::string& outputFile);
 
-    static LoadResult load(std::vector<SlideShow>& slideshows,
-                           std::map<std::string, size_t>& index,
-                           std::vector<std::string>& order,
-                           size_t& currentIdx,
-                           const std::string& pptxPath);
+    // Load slideshows from an existing PPTX (optional for now)
+    static bool load(std::vector<SlideShow>& slideshows,
+                     std::map<std::string, size_t>& presentationIndex,
+                     std::vector<std::string>& presentationOrder,
+                     size_t& currentIndex,
+                     const std::string& inputFile);
+
 };

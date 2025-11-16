@@ -3,6 +3,8 @@
 #include "../include/Commands.hpp"
 #include "../include/SlideShow.hpp"
 #include "../include/Color.hpp"
+#include "../include/PPTXSerializer.hpp"
+
 #include <iostream>
 
 Controller& Controller::instance() {
@@ -89,27 +91,29 @@ bool Controller::redo() {
     return true;
 }
 
+
 void Controller::run() {
     CommandParser parser;
     info() << "Multi-PPTX CLI Slideshow\n";
     info() << "Type 'help' for commands\n";
+
     while (true) {
         std::string prompt;
         if (slideshows.empty()) {
             prompt = "[No presentations] > ";
-        } 
-        else {
+        } else {
             const auto& currentSS = slideshows[currentIndex];
             size_t slideCount = currentSS.getSlides().size();
             size_t currentSlide = slideCount > 0 ? currentSS.getCurrentIndex() + 1 : 0;
             prompt = "[pp " + std::to_string(currentIndex + 1) + "/" + std::to_string(slideshows.size()) +
                      " | slide " + (slideCount > 0 ? std::to_string(currentSlide) : "0") + "/" + std::to_string(slideCount) + "] > ";
         }
+
         std::cout << BLUE << prompt << RESET;
+
         auto cmd = parser.parse(std::cin);
-        if (!cmd) {
-            continue;
-        }
+        if (!cmd) continue;
+
         // Determine if command modifies state
         bool shouldSnapshot = (
             dynamic_cast<CommandCreateSlideshow*>(cmd.get()) ||
@@ -123,16 +127,22 @@ void Controller::run() {
             dynamic_cast<CommandPrevFile*>(cmd.get())
         );
 
-        // Take snapshot BEFORE executing the command
-        if (shouldSnapshot) {
-            pushSnapshot();
-        }
+        if (shouldSnapshot) pushSnapshot();
+
         cmd->execute();
+
         if (dynamic_cast<CommandExit*>(cmd.get())) {
+            if (!slideshows.empty()) {
+                std::string defaultFile = "AutoExport.pptx";
+                success() << "Exporting all slideshows to " << defaultFile << "...\n";
+                PPTXSerializer::save(slideshows, presentationOrder, defaultFile);
+            }
             break;
         }
+
     }
 }
+
 
 std::vector<SlideShow>& Controller::getSlideshows() { 
     return slideshows; 

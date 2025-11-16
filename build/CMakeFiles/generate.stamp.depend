@@ -2,6 +2,7 @@
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCInformation.cmake
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCXXInformation.cmake
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeDependentOption.cmake
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeGenericSystem.cmake
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeInitializeConfigs.cmake
 C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeLanguageInformation.cmake
@@ -32,3 +33,9 @@ C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/4.1.1/CMakeCCompil
 C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/4.1.1/CMakeCXXCompiler.cmake
 C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/4.1.1/CMakeRCCompiler.cmake
 C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/4.1.1/CMakeSystem.cmake
+C:/dev/vcpkg/installed/x64-windows/share/libzip/libzip-config-version.cmake
+C:/dev/vcpkg/installed/x64-windows/share/libzip/libzip-config.cmake
+C:/dev/vcpkg/installed/x64-windows/share/libzip/libzip-targets-debug.cmake
+C:/dev/vcpkg/installed/x64-windows/share/libzip/libzip-targets-release.cmake
+C:/dev/vcpkg/installed/x64-windows/share/libzip/libzip-targets.cmake
+C:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake
