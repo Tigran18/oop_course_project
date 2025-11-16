@@ -1,6 +1,5 @@
-create slideshow MyPresentation.pptx 
+create slideshow MyPresentation
 add slide "Hello World" 100 100
-add slide image "MyImage" 50 50 "C:\Users\HP\Downloads\ChatGPT Image Nov 9, 2025, 08_54_21 PM.png"
-save MyPresentation.pptx
+add slide image MyImage "C:\Users\HP\Downloads\ChatGPT Image Nov 9, 2025, 08_54_21 PM.png"
 autosave on
 exit

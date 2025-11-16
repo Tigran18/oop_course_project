@@ -1,21 +1,29 @@
 #pragma once
-#include "SlideShow.hpp"
+
 #include <string>
 #include <vector>
 #include <map>
 
+class SlideShow;
+
 class PPTXSerializer {
 public:
-    // Save slideshows to a valid PPTX using template.pptx
+
+    // Save multiple slideshows merged into one PPTX.
+    // slideshows        : all slideshow objects
+    // order             : presentation names in the desired output order
+    // outputPath        : final .pptx path
+    //
+    // Returns true on success.
     static bool save(const std::vector<SlideShow>& slideshows,
                      const std::vector<std::string>& order,
-                     const std::string& outputFile);
+                     const std::string& outputPath);
 
-    // Load slideshows from an existing PPTX (optional for now)
+    // Optional: load is unimplemented (your original file returns false)
     static bool load(std::vector<SlideShow>& slideshows,
                      std::map<std::string, size_t>& presentationIndex,
                      std::vector<std::string>& presentationOrder,
                      size_t& currentIndex,
-                     const std::string& inputFile);
-
+                     const std::string& path);
 };
+
