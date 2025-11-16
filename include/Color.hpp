@@ -13,7 +13,7 @@ inline std::ostream& info() {
     return std::cout << GREEN "[INFO] " RESET; 
 }
 
-inline std::ostream& err() { 
+inline std::ostream& error() { 
     return std::cout << RED "[ERR] " RESET; 
 }
 

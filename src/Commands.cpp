@@ -1,11 +1,4 @@
 #include "../include/Commands.hpp"
-#include "../include/PPTXSerializer.hpp"
-#include "../include/Slide.hpp"
-#include "../include/Functions.hpp"
-#include <iostream>
-#include <fstream>
-#include <filesystem>
-#include <algorithm>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "../include/stb_image.h"
@@ -13,23 +6,7 @@
 namespace fs = std::filesystem;
 
 void CommandExit::execute() {
-    auto& ctrl = Controller::instance();
-    if (ctrl.getAutoSaveOnExit() && !ctrl.getSlideshows().empty()) {
-        PPTXSerializer::save(ctrl.getSlideshows(), ctrl.getPresentationOrder(), "autosave.pptx");
-        std::cout << "[INFO] Autosaved to autosave.pptx\n";
-    }
-    std::exit(0);
-}
 
-void CommandSave::execute() {
-    std::string path = args.empty() ? "session.pptx" : args[0];
-    if (!utils::endsWith(path, ".pptx")) path += ".pptx";
-    auto& ctrl = Controller::instance();
-    if (PPTXSerializer::save(ctrl.getSlideshows(), ctrl.getPresentationOrder(), path)) {
-        std::cout << "[INFO] Session saved to " << path << "\n";
-    } else {
-        std::cout << "[ERR] Failed to save: " << path << "\n";
-    }
 }
 
 void CommandHelp::execute() {
@@ -84,11 +61,14 @@ void CommandOpen::execute() {
         std::cout << "[ERR] Usage: open <file.pptx>\n";
         return;
     }
+
     std::string path = args[0];
-    if (!utils::endsWith(path, ".pptx")) path += ".pptx";
+    if (!utils::endsWith(path, ".pptx"))
+        path += ".pptx";
 
     auto& ctrl = Controller::instance();
     size_t dummy = 0;
+
     if (!PPTXSerializer::load(ctrl.getSlideshows(),
                               ctrl.getPresentationIndex(),
                               ctrl.getPresentationOrder(),
@@ -97,28 +77,54 @@ void CommandOpen::execute() {
         std::cout << "[ERR] Cannot load file: " << path << "\n";
         return;
     }
+
     ctrl.getCurrentIndex() = dummy;
     std::cout << "[INFO] Loaded session from " << path << "\n";
 }
 
+void CommandSave::execute() {
+    auto& ctrl = Controller::instance();
+
+    if (ctrl.getSlideshows().empty()) {
+        error() << "No presentations to save.\n";
+        return;
+    }
+
+    std::string out = filename;
+
+    // Ensure .pptx extension
+    if (out.size() < 5 || out.substr(out.size() - 5) != ".pptx")
+        out += ".pptx";
+
+    bool ok = PPTXSerializer::save(
+        ctrl.getSlideshows(),        // ALL slideshows
+        ctrl.getPresentationOrder(), // CORRECT ORDER
+        out
+    );
+
+    if (ok)
+        success() << "Saved to " << out << "\n";
+    else
+        error() << "Failed to save " << out << "\n";
+}
+
+
 void CommandAutoSave::execute() {
     auto& ctrl = Controller::instance();
     if (args.empty()) {
-        std::cout << "[INFO] Autosave on exit: " << (ctrl.getAutoSaveOnExit() ? "on" : "off") << "\n";
+        std::cout << "[INFO] Autosave is currently "
+                  << (ctrl.getAutoSaveOnExit() ? "ON\n" : "OFF\n");
         return;
     }
-    std::string arg = args[0];
-    std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);
-    if (arg == "on") {
+
+    if (args[0] == "on") {
         ctrl.setAutoSaveOnExit(true);
-        std::cout << "[INFO] Autosave enabled\n";
-    } 
-    else if (arg == "off") {
+        std::cout << "[INFO] Autosave on exit: ON\n";
+    } else if (args[0] == "off") {
         ctrl.setAutoSaveOnExit(false);
-        std::cout << "[INFO] Autosave disabled\n";
-    } 
-    else {
-        std::cout << "[ERR] Usage: autosave [on|off]\n";
+        std::cout << "[INFO] Autosave on exit: OFF\n";
+    } else {
+        std::cout << "[ERR] autosave expects 'on' or 'off'\n";
     }
 }
 
@@ -221,66 +227,39 @@ void CommandPrev::execute() {
     ss.show(); 
 }
 
-void CommandShow::execute() {
-    ss.show(); 
-    const auto& slide = ss.getSlides()[ss.getCurrentIndex()];
-    const auto& shapes = slide.getShapes();
-    const Shape* imgShape = nullptr;
-    for (const auto& s : shapes) {
-        if (s.isImage()) {
-            imgShape = &s;
-            break;
-        }
-    }
-    if (!imgShape) {
+void CommandPreview::execute() {
+    auto& ss = ctrl.getCurrentSlideshow();
+    auto& slides = ss.getSlides();
+
+    if (slides.empty()) {
+        error() << "No slides.\n";
         return;
     }
-    const auto& data = imgShape->getImageData();
-    std::cout << "[PREVIEW] Image '" << imgShape->getName() << "' (" << data.size() << " bytes)\n";
-    int width, height, channels;
-    unsigned char* img = stbi_load_from_memory(
-        data.data(),
-        static_cast<int>(data.size()),
-        &width, &height, &channels, 3
-    );
-    if (!img) {
-        std::cout << "[ERR] Failed to decode image.\n";
-        return;
-    }
-    const char* gradient = "@%#*+=-:. ";
-    const int maxWidth = 80;
-    const int maxHeight = 40;
-    int newWidth = width;
-    int newHeight = height;
-    float aspectRatio = float(width) / float(height);
-    if (width > maxWidth) {
-        newWidth = maxWidth;
-        newHeight = static_cast<int>(maxWidth / aspectRatio);
-    }
-    if (newHeight > maxHeight) {
-        newHeight = maxHeight;
-        newWidth = static_cast<int>(maxHeight * aspectRatio);
-    }
-    auto getPixel = [&](int x, int y, int c) -> unsigned char {
-        int sx = x * width / newWidth;
-        int sy = y * height / newHeight;
-        return img[(sy * width + sx) * 3 + c];
-    };
-    for (int y = 0; y < newHeight; ++y) {
-        for (int x = 0; x < newWidth; ++x) {
-            unsigned char r = getPixel(x, y, 0);
-            unsigned char g = getPixel(x, y, 1);
-            unsigned char b = getPixel(x, y, 2);
-            float gray = 0.2126f * r + 0.7152f * g + 0.0722f * b; // luminance
-            int index = static_cast<int>(gray / 256.0f * 10);
-            if (index > 9) index = 9;
-            std::cout << gradient[index];
+
+    const Slide& slide = slides[ss.getCurrentIndex()];
+
+    for (const auto& sh : slide.getShapes()) {
+        if (sh.isImage()) {
+            const auto& data = sh.getImageData();
+
+            std::vector<unsigned char> rgba;
+            unsigned w = 0, h = 0;
+
+            unsigned err = lodepng::decode(rgba, w, h, data.data(), data.size());
+            if (err) {
+                error() << "PNG decode error.\n";
+                return;
+            }
+
+            // Render in full color!
+            utils::renderColorPreview(rgba, w, h, 120);
+            return;
         }
-        std::cout << "\n";
     }
-    stbi_image_free(img);
-    std::cout << "[INFO] ASCII image preview complete.\n";
+
+    error() << "No image on this slide.\n";
 }
+
 
 void CommandNextFile::execute() {
     auto& order = ctrl.getPresentationOrder();

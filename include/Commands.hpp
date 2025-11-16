@@ -4,8 +4,16 @@
 #include "SlideShow.hpp"
 #include "Shape.hpp"
 #include "Functions.hpp"
+#include "PPTXSerializer.hpp"
+#include "Color.hpp"
+#include "lodepng.h"
+
 #include <vector>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
+#include <algorithm>
 
 class CommandExit : public ICommand { 
 public:
@@ -29,25 +37,28 @@ class CommandOpen : public ICommand {
     Controller& ctrl;
     std::vector<std::string> args;
 public:
-    CommandOpen(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    CommandOpen(Controller& c, std::vector<std::string> a)
+        : ctrl(c), args(std::move(a)) {}
     void execute() override;
 };
 
 class CommandSave : public ICommand {
-    Controller& ctrl;
-    std::vector<std::string> args;
+    std::string filename;
 public:
-    CommandSave(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    CommandSave(const std::string& f) : filename(f) {}
     void execute() override;
 };
+
 
 class CommandAutoSave : public ICommand {
     Controller& ctrl;
     std::vector<std::string> args;
 public:
-    CommandAutoSave(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    CommandAutoSave(Controller& c, std::vector<std::string> a)
+        : ctrl(c), args(std::move(a)) {}
     void execute() override;
 };
+
 
 class CommandAddSlide : public ICommand {
     Controller& ctrl;
@@ -95,12 +106,13 @@ public:
     void execute() override;
 };
 
-class CommandShow : public ICommand {
-    SlideShow& ss;
+class CommandPreview : public ICommand {
+    Controller& ctrl;
 public:
-    CommandShow(SlideShow& s) : ss(s) {}
+    CommandPreview(Controller& c) : ctrl(c) {}
     void execute() override;
 };
+
 
 class CommandNextFile : public ICommand {
     Controller& ctrl;
