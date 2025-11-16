@@ -5,24 +5,23 @@
 
 class SlideShow {
 private:
+    std::string filename;
     std::vector<Slide> slides;
     size_t currentIndex = 0;
-    std::string filename;
 
 public:
-    explicit SlideShow(const std::string& filename);
+    explicit SlideShow(std::string name);
 
-    void open();
-    void show() const;
+    const std::string& getFilename() const;
+    std::vector<Slide>& getSlides();
+    const std::vector<Slide>& getSlides() const;
+    size_t getCurrentIndex() const;
+    void setCurrentIndex(size_t idx);
+
     void next();
     void prev();
-    void gotoSlide(size_t slideNumber);
+    void show() const;
 
-    const std::vector<Slide>& getSlides() const;
-    std::vector<Slide>& getSlides();
-    size_t getCurrentIndex() const;
-    void   setCurrentIndex(size_t idx);
-    const std::string& getFilename() const;
-
-    bool isEmpty() const;
+    SlideShow(const SlideShow&) = default;
+    SlideShow& operator=(const SlideShow&) = default;
 };

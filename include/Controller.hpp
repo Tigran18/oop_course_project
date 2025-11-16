@@ -1,7 +1,10 @@
 #pragma once
-#include "SlideShow.hpp"
 #include <vector>
+#include <deque>
+#include <string>
 #include <map>
+
+#include "SlideShow.hpp"
 
 class Controller {
 private:
@@ -9,28 +12,37 @@ private:
     std::map<std::string, size_t> presentationIndex;
     std::vector<std::string> presentationOrder;
     size_t currentIndex = 0;
+    bool autoSaveOnExit = true;
 
-    int storedArgc = 0;
-    char** storedArgv = nullptr;
+    std::deque<std::vector<SlideShow>> undoStack;
+    std::deque<std::vector<SlideShow>> redoStack;
 
-    Controller(int argc, char* argv[]);
+    Controller() = default;
+
+    void pushSnapshot();
+    void rebuildIndexAndOrder();
 
 public:
-    static Controller& instance(int argc = 0, char** argv = nullptr);
-
-    void run();
+    static Controller& instance();
 
     std::vector<SlideShow>& getSlideshows();
-
+    
     const std::vector<SlideShow>& getSlideshows() const;
-
-    size_t& getCurrentIndex();
 
     std::map<std::string, size_t>& getPresentationIndex();
 
-    const std::map<std::string, size_t>& getPresentationIndex() const;
-
     std::vector<std::string>& getPresentationOrder();
 
+    size_t& getCurrentIndex();
+
     SlideShow& getCurrentSlideshow();
+    
+    bool getAutoSaveOnExit() const;
+
+    void setAutoSaveOnExit(bool b);
+
+    bool undo();
+    bool redo();
+
+    void run();
 };

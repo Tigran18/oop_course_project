@@ -1,13 +1,10 @@
 #include "../include/Shape.hpp"
-#include <iostream>
 
-Shape::Shape(const std::string& n, int xx, int yy)
-    : name(n), x(xx), y(yy) {}
+Shape::Shape(std::string n, int px, int py)
+    : name(std::move(n)), x(px), y(py) {}
 
-void Shape::draw() const {
-    std::cout << "Drawing shape: " << name
-              << " at (" << x << ", " << y << ")" << std::endl;
-}
+Shape::Shape(std::string n, int px, int py, std::vector<uint8_t> data)
+    : name(std::move(n)), x(px), y(py), imageData(std::move(data)), isImageFlag(true) {}
 
 const std::string& Shape::getName() const { 
     return name; 
@@ -20,4 +17,11 @@ int Shape::getX() const {
 int Shape::getY() const { 
     return y; 
 }
-    
+
+const std::vector<uint8_t>& Shape::getImageData() const { 
+    return imageData; 
+}
+
+bool Shape::isImage() const { 
+    return isImageFlag; 
+}

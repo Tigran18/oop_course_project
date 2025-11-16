@@ -1,7 +1,7 @@
 #include "../include/Controller.hpp"
+#include <iostream>
 
-int main(int argc, char* argv[]) {
-    auto& instance = Controller::instance(argc, argv);
-    instance.run();
+int main() {
+    Controller::instance().run();
     return 0;
 }

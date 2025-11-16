@@ -1,109 +1,143 @@
 #pragma once
 #include "ICommand.hpp"
+#include "Controller.hpp"
 #include "SlideShow.hpp"
+#include "Shape.hpp"
+#include "Functions.hpp"
+#include "PPTXSerializer.hpp"
+#include "Color.hpp"
+#include "lodepng.h"
+
 #include <vector>
-#include <map>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <filesystem>
+#include <algorithm>
 
-class Controller;
-
-class CommandExit : public ICommand {
+class CommandExit : public ICommand { 
 public:
+    void execute() override; 
+};
+
+class CommandHelp : public ICommand { 
+public:
+    void execute() override; 
+};
+
+class CommandCreateSlideshow : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
+public:
+    CommandCreateSlideshow(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
     void execute() override;
 };
 
-class CommandHelp : public ICommand {
+class CommandOpen : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
 public:
+    CommandOpen(Controller& c, std::vector<std::string> a)
+        : ctrl(c), args(std::move(a)) {}
     void execute() override;
 };
 
-class CommandEmpty : public ICommand {
+class CommandSave : public ICommand {
+    std::string filename;
 public:
+    CommandSave(const std::string& f) : filename(f) {}
     void execute() override;
 };
 
-class CommandSafety : public ICommand {
-    std::string message;
+
+class CommandAutoSave : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
 public:
-    CommandSafety(const std::string& msg) : message(msg) {}
-    void execute() override { std::cout << message << "\n"; }
+    CommandAutoSave(Controller& c, std::vector<std::string> a)
+        : ctrl(c), args(std::move(a)) {}
+    void execute() override;
 };
 
+
+class CommandAddSlide : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
+public:
+    CommandAddSlide(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    void execute() override;
+};
+
+class CommandRemoveSlide : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
+public:
+    CommandRemoveSlide(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    void execute() override;
+};
+
+class CommandMoveSlide : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
+public:
+    CommandMoveSlide(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    void execute() override;
+};
+
+class CommandGotoSlide : public ICommand {
+    Controller& ctrl;
+    std::vector<std::string> args;
+public:
+    CommandGotoSlide(Controller& c, std::vector<std::string> a) : ctrl(c), args(std::move(a)) {}
+    void execute() override;
+};
 
 class CommandNext : public ICommand {
     SlideShow& ss;
 public:
     CommandNext(SlideShow& s) : ss(s) {}
-    void execute() override { ss.next(); }
+    void execute() override;
 };
 
 class CommandPrev : public ICommand {
     SlideShow& ss;
 public:
     CommandPrev(SlideShow& s) : ss(s) {}
-    void execute() override { ss.prev(); }
+    void execute() override;
 };
 
-class CommandShow : public ICommand {
-    SlideShow& ss;
+class CommandPreview : public ICommand {
+    Controller& ctrl;
 public:
-    CommandShow(SlideShow& s) : ss(s) {}
-    void execute() override { ss.show(); }
+    CommandPreview(Controller& c) : ctrl(c) {}
+    void execute() override;
 };
+
 
 class CommandNextFile : public ICommand {
-    size_t& currentIndex;
-    std::vector<SlideShow>& slideshows;
+    Controller& ctrl;
 public:
-    CommandNextFile(size_t& idx, std::vector<SlideShow>& ss)
-        : currentIndex(idx), slideshows(ss) {}
+    CommandNextFile(Controller& c) : ctrl(c) {}
     void execute() override;
 };
 
 class CommandPrevFile : public ICommand {
-    size_t& currentIndex;
-    std::vector<SlideShow>& slideshows;
-public:
-    CommandPrevFile(size_t& idx, std::vector<SlideShow>& ss)
-        : currentIndex(idx), slideshows(ss) {}
-    void execute() override;
-};
-
-class CommandGoto : public ICommand {
-    size_t& currentIndex;
-    std::vector<SlideShow>& slideshows;
-    std::map<std::string, size_t>& presentationIndex;
-    std::vector<std::string>& presentationOrder;
-    std::vector<std::string> args;
-public:
-    CommandGoto(size_t& idx, std::vector<SlideShow>& ss,
-                std::map<std::string, size_t>& pIndex,
-                std::vector<std::string>& pOrder,
-                const std::vector<std::string>& arguments);
-    void execute() override;
-};
-
-class CommandSave : public ICommand {
     Controller& ctrl;
-    std::vector<std::string> args;
 public:
-    CommandSave(Controller& c, const std::vector<std::string>& a) : ctrl(c), args(a) {}
+    CommandPrevFile(Controller& c) : ctrl(c) {}
     void execute() override;
 };
 
-class CommandLoad : public ICommand {
+class CommandUndo : public ICommand {
     Controller& ctrl;
-    std::vector<std::string> args;
 public:
-    CommandLoad(Controller& c, const std::vector<std::string>& a) : ctrl(c), args(a) {}
+    CommandUndo(Controller& c) : ctrl(c) {}
     void execute() override;
 };
 
-class CommandAdd : public ICommand {
+class CommandRedo : public ICommand {
     Controller& ctrl;
-    std::vector<std::string> args;
 public:
-    CommandAdd(Controller& c, const std::vector<std::string>& a) : ctrl(c), args(a) {}
+    CommandRedo(Controller& c) : ctrl(c) {}
     void execute() override;
 };
