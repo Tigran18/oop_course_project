@@ -1,26 +1,35 @@
 #include "../include/Token.hpp"
-#include <cctype>
+#include <sstream>
 
-Token::Token(TokenType t, std::string v) : type(t), value(std::move(v)) {
+std::string Token::asString() const {
+    if (std::holds_alternative<std::string>(value)) {
+        return std::get<std::string>(value);
+    }
+    if (std::holds_alternative<double>(value)) {
+        return std::to_string(std::get<double>(value));
+    }
+    return "";
+}
 
+double Token::asNumber() const {
+    if (std::holds_alternative<double>(value)) {
+        return std::get<double>(value);
+    }
+    return 0.0;
+}
+
+bool Token::is(const TokenType& t) const { 
+    return type == t; 
 }
 
 bool Token::isCommand() const { 
     return type == TokenType::COMMAND; 
 }
- 
-bool Token::isLiteral() const { 
-    return type == TokenType::LITERAL; 
-}
 
 bool Token::isQuoted() const { 
-    return type == TokenType::QUOTED_STRING; 
+    return type == TokenType::STRING; 
 }
 
-std::string Token::unquoted() const {
-    if (type != TokenType::QUOTED_STRING) {
-        return value;
-    }
-    std::string s = value.substr(1, value.size() - 2);
-    return s;
+std::string Token::unquoted() const { 
+    return asString(); 
 }

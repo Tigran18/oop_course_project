@@ -1,8 +1,9 @@
 #pragma once
-#include "Token.hpp"
+#include <string>
 #include <vector>
+#include "Token.hpp"
 
 class Tokenizer {
 public:
-    static std::vector<Token> tokenizeCommandLine(const std::string& input);
+    static std::vector<Token> tokenizeCommandLine(const std::string& line);
 };
