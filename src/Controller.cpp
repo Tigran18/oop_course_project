@@ -58,9 +58,10 @@ void Controller::run() {
             std::cout << "[No presentations] > ";
 
         auto cmd = CommandParser::parse(std::cin);
-        if (std::cin.eof()) break;
+        if (std::cin.eof()) {
+            break;
+        }
         cmd->execute();
-        if (cmd->shouldExit()) break;
     }
 }
 

@@ -11,7 +11,6 @@ class Controller;
 class CommandExit : public ICommand {
 public:
     void execute() override;
-    bool shouldExit() const override;
 };
 
 class CommandHelp : public ICommand {

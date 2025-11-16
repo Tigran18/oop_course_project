@@ -3,7 +3,6 @@
 
 class ICommand {
 public:
-    virtual ~ICommand() = default;
+    virtual ~ICommand();
     virtual void execute() = 0;
-    virtual bool shouldExit() const;
 };
