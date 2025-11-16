@@ -1,0 +1,6 @@
+create slideshow MyPresentation.pptx 
+add slide "Hello World" 100 100
+add slide image "MyImage" 50 50 "C:\Users\HP\Downloads\ChatGPT Image Nov 9, 2025, 08_54_21 PM.png"
+save MyPresentation.pptx
+autosave on
+exit

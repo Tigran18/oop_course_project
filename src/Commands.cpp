@@ -21,6 +21,17 @@ void CommandExit::execute() {
     std::exit(0);
 }
 
+void CommandSave::execute() {
+    std::string path = args.empty() ? "session.pptx" : args[0];
+    if (!utils::endsWith(path, ".pptx")) path += ".pptx";
+    auto& ctrl = Controller::instance();
+    if (PPTXSerializer::save(ctrl.getSlideshows(), ctrl.getPresentationOrder(), path)) {
+        std::cout << "[INFO] Session saved to " << path << "\n";
+    } else {
+        std::cout << "[ERR] Failed to save: " << path << "\n";
+    }
+}
+
 void CommandHelp::execute() {
     std::cout << "=== SLIDESHOW COMMANDS ===\n"
               << "  create slideshow <name> - create new empty presentation\n"
@@ -74,60 +85,20 @@ void CommandOpen::execute() {
         return;
     }
     std::string path = args[0];
-    if (!utils::endsWith(path, ".pptx")) {
-        path += ".pptx";
-    }
-    std::vector<SlideShow> tmp;
-    std::map<std::string, size_t> idx_map;
-    std::vector<std::string> order;
-    size_t dummy = 0;
-    auto result = PPTXSerializer::load(tmp, idx_map, order, dummy, path);
-    if (result == LoadResult::NOT_FOUND) {
-        std::cout << "[INFO] File not found. Creating new presentation: " << path << "\n";
-        SlideShow ss(path);
-        auto& ctrl = Controller::instance();
-        auto& slideshows = ctrl.getSlideshows();
-        auto& presIndex = ctrl.getPresentationIndex();
-        auto& presOrder = ctrl.getPresentationOrder();
-        slideshows.push_back(std::move(ss));
-        size_t idx = slideshows.size() - 1;
-        presIndex[path] = idx;
-        presOrder.push_back(path);
-        ctrl.getCurrentIndex() = idx;
-        return;
-    }
-    if (result != LoadResult::SUCCESS) {
-        std::cout << "[ERR] Cannot load file: " << path << " (corrupted or I/O error)\n";
-        return;
-    }
+    if (!utils::endsWith(path, ".pptx")) path += ".pptx";
+
     auto& ctrl = Controller::instance();
-    auto& slideshows = ctrl.getSlideshows();
-    auto& presIndex = ctrl.getPresentationIndex();
-    auto& presOrder = ctrl.getPresentationOrder();
-    for (auto& ss : tmp) {
-        if (presIndex.find(ss.getFilename()) == presIndex.end()) {
-            size_t idx = slideshows.size();
-            presIndex[ss.getFilename()] = idx;
-            presOrder.push_back(ss.getFilename());
-            slideshows.push_back(std::move(ss));
-        }
+    size_t dummy = 0;
+    if (!PPTXSerializer::load(ctrl.getSlideshows(),
+                              ctrl.getPresentationIndex(),
+                              ctrl.getPresentationOrder(),
+                              dummy,
+                              path)) {
+        std::cout << "[ERR] Cannot load file: " << path << "\n";
+        return;
     }
     ctrl.getCurrentIndex() = dummy;
     std::cout << "[INFO] Loaded session from " << path << "\n";
-}
-
-void CommandSave::execute() {
-    std::string path = args.empty() ? "session.pptx" : args[0];
-    if (!utils::endsWith(path, ".pptx")) {
-        path += ".pptx";
-    }
-    auto& ctrl = Controller::instance();
-    if (PPTXSerializer::save(ctrl.getSlideshows(), ctrl.getPresentationOrder(), path)) {
-        std::cout << "[INFO] Session saved to " << path << "\n";
-    } 
-    else {
-        std::cout << "[ERR] Failed to save: " << path << "\n";
-    }
 }
 
 void CommandAutoSave::execute() {
