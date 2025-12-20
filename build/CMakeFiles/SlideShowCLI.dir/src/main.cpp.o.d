@@ -2,6 +2,8 @@ CMakeFiles/SlideShowCLI.dir/src/main.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/main.cpp \
  /usr/include/stdc-predef.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Controller.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -59,9 +61,8 @@ CMakeFiles/SlideShowCLI.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/ranges_util.h \
  /usr/include/c++/13/bits/ranges_base.h \
  /usr/include/c++/13/bits/max_size_type.h /usr/include/c++/13/numbers \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/string \
- /usr/include/c++/13/bits/stringfwd.h \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
  /usr/include/wchar.h \
@@ -127,23 +128,18 @@ CMakeFiles/SlideShowCLI.dir/src/main.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
- /usr/include/c++/13/ios /usr/include/c++/13/exception \
- /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/bits/ios_base.h /usr/include/c++/13/ext/atomicity.h \

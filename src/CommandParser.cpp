@@ -93,6 +93,10 @@ std::unique_ptr<ICommand> CommandParser::parse(std::istream& in) {
     if (cmd == "prev") {
         return std::unique_ptr<ICommand>(new CommandPrev(ctrl.getCurrentSlideshow()));
     }
+
+    if (cmd == "show") {
+        return std::unique_ptr<ICommand>(new CommandShow(ctrl.getCurrentSlideshow()));
+    }
     if (cmd == "preview") {
         return std::make_unique<CommandPreview>(ctrl);
     }

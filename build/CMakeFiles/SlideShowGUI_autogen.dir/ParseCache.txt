@@ -416,8 +416,6 @@
  mmc:Q_OBJECT
  mdp:/home/tigranda35/Desktop/dir_projects/oop_course_project/build/SlideShowGUI_autogen/moc_predefs.h
  mdp:/home/tigranda35/Desktop/dir_projects/oop_course_project/gui/CanvasView.hpp
- mdp:/home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp
- mdp:/home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp
  mdp:/usr/include/alloca.h
  mdp:/usr/include/asm-generic/errno-base.h
  mdp:/usr/include/asm-generic/errno.h
@@ -702,7 +700,6 @@
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QString
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h
@@ -813,7 +810,6 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsView
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h
@@ -1113,7 +1109,6 @@
  mdp:/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  mdp:/usr/include/x86_64-linux-gnu/gnu/stubs.h
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QChar
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QString
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h

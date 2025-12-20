@@ -1,131 +1,188 @@
 #include "Controller.hpp"
+
 #include "CommandParser.hpp"
+#include "ICommand.hpp"
 #include "Commands.hpp"
-#include "SlideShow.hpp"
 #include "Color.hpp"
-#include "PPTXSerializer.hpp"
 
 #include <iostream>
+#include <sstream>
+#include <memory>
+#include <algorithm>
 
-Controller& Controller::instance() {
+Controller& Controller::instance()
+{
     static Controller inst;
     return inst;
 }
 
-SlideShow& Controller::getCurrentSlideshow() {
-    if (slideshows.empty()) {
-        static SlideShow dummy("<<NO PRESENTATION>>");
+std::vector<SlideShow>& Controller::getSlideshows() { return slideshows_; }
+const std::vector<SlideShow>& Controller::getSlideshows() const { return slideshows_; }
+
+std::vector<std::string>& Controller::getPresentationOrder() { return presentationOrder_; }
+const std::vector<std::string>& Controller::getPresentationOrder() const { return presentationOrder_; }
+
+std::map<std::string, size_t>& Controller::getPresentationIndex() { return presentationIndex_; }
+const std::map<std::string, size_t>& Controller::getPresentationIndex() const { return presentationIndex_; }
+
+size_t& Controller::getCurrentIndex() { return currentIndex_; }
+size_t Controller::getCurrentIndex() const { return currentIndex_; }
+
+void Controller::normalizeCurrentIndex()
+{
+    if (slideshows_.empty()) {
+        currentIndex_ = 0;
+        return;
+    }
+    if (currentIndex_ >= slideshows_.size()) currentIndex_ = 0;
+}
+
+void Controller::ensureOrderIndexConsistent()
+{
+    presentationIndex_.clear();
+
+    if (presentationOrder_.empty()) {
+        presentationOrder_.reserve(slideshows_.size());
+        for (const auto& ss : slideshows_) {
+            presentationOrder_.push_back(ss.getFilename());
+        }
+    }
+
+    std::vector<std::string> newOrder;
+    newOrder.reserve(presentationOrder_.size());
+
+    for (const auto& name : presentationOrder_) {
+        auto it = std::find_if(slideshows_.begin(), slideshows_.end(),
+                               [&](const SlideShow& s) { return s.getFilename() == name; });
+        if (it != slideshows_.end()) newOrder.push_back(name);
+    }
+
+    for (const auto& ss : slideshows_) {
+        const std::string& name = ss.getFilename();
+        if (std::find(newOrder.begin(), newOrder.end(), name) == newOrder.end())
+            newOrder.push_back(name);
+    }
+
+    presentationOrder_ = std::move(newOrder);
+
+    for (size_t i = 0; i < slideshows_.size(); ++i) {
+        presentationIndex_[slideshows_[i].getFilename()] = i;
+    }
+
+    normalizeCurrentIndex();
+}
+
+void Controller::rebuildUiIndex()
+{
+    ensureOrderIndexConsistent();
+}
+
+SlideShow& Controller::getCurrentSlideshow()
+{
+    normalizeCurrentIndex();
+    if (slideshows_.empty()) {
+        slideshows_.emplace_back("Presentation");
+        presentationOrder_.clear();
+        presentationIndex_.clear();
+        ensureOrderIndexConsistent();
+        currentIndex_ = 0;
+    }
+    normalizeCurrentIndex();
+    return slideshows_[currentIndex_];
+}
+
+const SlideShow& Controller::getCurrentSlideshow() const
+{
+    if (slideshows_.empty()) {
+        static SlideShow dummy("Presentation");
         return dummy;
     }
-    return slideshows[currentIndex];
+    size_t idx = currentIndex_;
+    if (idx >= slideshows_.size()) idx = 0;
+    return slideshows_[idx];
 }
 
-void Controller::snapshot() {
-    pushSnapshot();
+void Controller::setAutoSaveOnExit(bool on) { autosaveOnExit_ = on; }
+bool Controller::getAutoSaveOnExit() const { return autosaveOnExit_; }
+
+Controller::SnapshotState Controller::packState() const
+{
+    SnapshotState st;
+    st.slideshows = slideshows_;
+    st.order = presentationOrder_;
+    st.index = presentationIndex_;
+    st.currentIndex = currentIndex_;
+    st.autosaveOnExit = autosaveOnExit_;
+    return st;
 }
 
-void Controller::rebuildUiIndex() {
-    rebuildIndexAndOrder();
+void Controller::restoreState(const SnapshotState& st)
+{
+    slideshows_ = st.slideshows;
+    presentationOrder_ = st.order;
+    presentationIndex_ = st.index;
+    currentIndex_ = st.currentIndex;
+    autosaveOnExit_ = st.autosaveOnExit;
+    ensureOrderIndexConsistent();
 }
 
-
-void Controller::pushSnapshot() {
-    std::vector<SlideShow> copy;
-    copy.reserve(slideshows.size());
-    for (const auto& ss : slideshows)
-        copy.push_back(ss);
-    undoStack.push_back(std::move(copy));
-    redoStack.clear();
-    if (undoStack.size() > 50) undoStack.pop_front();
+void Controller::snapshot()
+{
+    undo_.push_back(packState());
+    redo_.clear();
 }
 
-void Controller::rebuildIndexAndOrder() {
-    presentationIndex.clear();
-    presentationOrder.clear();
-    for (size_t i = 0; i < slideshows.size(); ++i) {
-        const auto& name = slideshows[i].getFilename();
-        presentationIndex[name] = i;
-        presentationOrder.push_back(name);
-    }
-    if (!presentationOrder.empty()) {
-        currentIndex = presentationIndex[presentationOrder.back()];
-    } else {
-        currentIndex = 0;
-    }
-}
+bool Controller::undo()
+{
+    if (undo_.empty()) return false;
 
-bool Controller::undo() {
-    if (undoStack.empty()) return false;
-
-    // Save current state to redo stack
-    std::vector<SlideShow> currentCopy;
-    currentCopy.reserve(slideshows.size());
-    for (const auto& ss : slideshows) {
-        currentCopy.push_back(ss);
-    }
-    redoStack.push_back(std::move(currentCopy));
-
-    // Restore from undo stack
-    slideshows = std::move(undoStack.back());
-    undoStack.pop_back();
-
-    rebuildIndexAndOrder();
-
-    if (redoStack.size() > 50) redoStack.pop_front();
-
+    redo_.push_back(packState());
+    SnapshotState st = undo_.back();
+    undo_.pop_back();
+    restoreState(st);
     return true;
 }
 
-bool Controller::redo() {
-    if (redoStack.empty()) {
-        return false;
-    }
-    // Save current state to undo stack
-    std::vector<SlideShow> currentCopy;
-    currentCopy.reserve(slideshows.size());
-    for (const auto& ss : slideshows) {
-        currentCopy.push_back(ss);
-    }
-    undoStack.push_back(std::move(currentCopy));
+bool Controller::redo()
+{
+    if (redo_.empty()) return false;
 
-    // Restore from redo stack
-    slideshows = std::move(redoStack.back());
-    redoStack.pop_back();
-
-    rebuildIndexAndOrder();
-
-    if (undoStack.size() > 50) {
-        undoStack.pop_front();
-    }
+    undo_.push_back(packState());
+    SnapshotState st = redo_.back();
+    redo_.pop_back();
+    restoreState(st);
     return true;
 }
 
-
-void Controller::run() {
-    CommandParser parser;
-    info() << "Multi-PPTX CLI Slideshow\n";
-    info() << "Type 'help' for commands\n";
+void Controller::run()
+{
+    std::cout << "SlideShowCLI started\n";
+    std::string line;
 
     while (true) {
-        std::string prompt;
-        if (slideshows.empty()) {
-            prompt = "[No presentations] > ";
-        } else {
-            const auto& currentSS = slideshows[currentIndex];
-            size_t slideCount = currentSS.getSlides().size();
-            size_t currentSlide = slideCount > 0 ? currentSS.getCurrentIndex() + 1 : 0;
-            prompt = "[pp " + std::to_string(currentIndex + 1) + "/" + std::to_string(slideshows.size()) +
-                     " | slide " + (slideCount > 0 ? std::to_string(currentSlide) : "0") + "/" + std::to_string(slideCount) + "] > ";
+        std::string prompt = "> ";
+        std::cout << BLUE << prompt << RESET;
+        if (!std::getline(std::cin, line)) break;
+
+        std::string trimmed = line;
+        while (!trimmed.empty() && (trimmed.back() == '\r' || trimmed.back() == '\n'))
+            trimmed.pop_back();
+        if (trimmed.empty()) continue;
+
+        if (trimmed == "exit") break;
+
+        CommandParser parser;
+        std::istringstream in(trimmed);
+        std::unique_ptr<ICommand> cmd = parser.parse(in);
+
+        if (!cmd) {
+            error() << "Invalid command\n";
+            continue;
         }
 
-        std::cout << BLUE << prompt << RESET;
-
-        auto cmd = parser.parse(std::cin);
-        if (!cmd) continue;
-
-        // Determine if command modifies state
-        bool shouldSnapshot = (
+        bool shouldSnapshot =
             dynamic_cast<CommandCreateSlideshow*>(cmd.get()) ||
+            dynamic_cast<CommandOpen*>(cmd.get()) ||
             dynamic_cast<CommandAddSlide*>(cmd.get()) ||
             dynamic_cast<CommandRemoveSlide*>(cmd.get()) ||
             dynamic_cast<CommandMoveSlide*>(cmd.get()) ||
@@ -133,50 +190,13 @@ void Controller::run() {
             dynamic_cast<CommandNext*>(cmd.get()) ||
             dynamic_cast<CommandPrev*>(cmd.get()) ||
             dynamic_cast<CommandNextFile*>(cmd.get()) ||
-            dynamic_cast<CommandPrevFile*>(cmd.get())
-        );
+            dynamic_cast<CommandPrevFile*>(cmd.get()) ||
+            dynamic_cast<CommandUndo*>(cmd.get()) ||
+            dynamic_cast<CommandRedo*>(cmd.get());
 
-        if (shouldSnapshot) pushSnapshot();
+        if (shouldSnapshot) snapshot();
 
         cmd->execute();
-
-        if (dynamic_cast<CommandExit*>(cmd.get())) {
-            if (!slideshows.empty()) {
-                std::string defaultFile = "AutoExport.pptx";
-                success() << "Exporting all slideshows to " << defaultFile << "...\n";
-                PPTXSerializer::save(slideshows, presentationOrder, defaultFile);
-            }
-            break;
-        }
-
+        rebuildUiIndex();
     }
-}
-
-
-std::vector<SlideShow>& Controller::getSlideshows() { 
-    return slideshows; 
-}
-    
-const std::vector<SlideShow>& Controller::getSlideshows() const { 
-    return slideshows; 
-}
-
-std::map<std::string, size_t>& Controller::getPresentationIndex() { 
-    return presentationIndex; 
-}
-
-std::vector<std::string>& Controller::getPresentationOrder() { 
-    return presentationOrder; 
-}
-
-size_t& Controller::getCurrentIndex() { 
-    return currentIndex; 
-}
- 
-bool Controller::getAutoSaveOnExit() const { 
-    return autoSaveOnExit; 
-}
-
-void Controller::setAutoSaveOnExit(bool b) { 
-    autoSaveOnExit = b; 
 }

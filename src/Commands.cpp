@@ -36,25 +36,35 @@ void CommandCreateSlideshow::execute() {
         std::cout << "[ERR] Usage: create slideshow <name>\n";
         return;
     }
+
     std::string name = args[0];
-    for (const auto& ss : ctrl.getSlideshows()) {
-        if (ss.getFilename() == name) {
-            std::cout << "[ERR] Presentation '" << name << "' already exists\n";
-            return;
-        }
+
+    // Optional: auto-append .pptx if user didn't type it
+    // (uncomment if you want this behavior)
+    // if (name.size() < 5 || name.substr(name.size() - 5) != ".pptx")
+    //     name += ".pptx";
+
+    auto& slideshows = ctrl.getSlideshows();
+    auto& order      = ctrl.getPresentationOrder();
+    auto& index      = ctrl.getPresentationIndex();
+
+    // Fast duplicate check using the index map
+    if (index.find(name) != index.end()) {
+        std::cout << "[ERR] Presentation '" << name << "' already exists\n";
+        return;
     }
 
-    SlideShow ss(name);
-    auto& slideshows = ctrl.getSlideshows();
-    auto& order = ctrl.getPresentationOrder();
-    auto& index = ctrl.getPresentationIndex();
-    slideshows.push_back(std::move(ss));
-    size_t idx = slideshows.size() - 1;
-    index[name] = idx;
+    slideshows.emplace_back(name);
+    const size_t newIdx = slideshows.size() - 1;
+
+    index[name] = newIdx;
     order.push_back(name);
-    ctrl.getCurrentIndex() = idx;
+
+    ctrl.getCurrentIndex() = newIdx;
+
     std::cout << "[INFO] Created presentation: " << name << "\n";
 }
+
 
 void CommandOpen::execute() {
     if (args.empty()) {
@@ -225,6 +235,10 @@ void CommandNext::execute() {
 void CommandPrev::execute() { 
     ss.prev(); 
     ss.show(); 
+}
+
+void CommandShow::execute() {
+    ss.show();
 }
 
 void CommandPreview::execute() {

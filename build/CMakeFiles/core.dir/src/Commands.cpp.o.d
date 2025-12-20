@@ -4,6 +4,8 @@ CMakeFiles/core.dir/src/Commands.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Commands.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/ICommand.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Controller.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -61,9 +63,8 @@ CMakeFiles/core.dir/src/Commands.cpp.o: \
  /usr/include/c++/13/bits/ranges_util.h \
  /usr/include/c++/13/bits/ranges_base.h \
  /usr/include/c++/13/bits/max_size_type.h /usr/include/c++/13/numbers \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/string \
- /usr/include/c++/13/bits/stringfwd.h \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
  /usr/include/wchar.h \
@@ -129,20 +130,16 @@ CMakeFiles/core.dir/src/Commands.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Functions.hpp \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/exception \
@@ -180,9 +177,25 @@ CMakeFiles/core.dir/src/Commands.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/PPTXSerializer.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Color.hpp \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/lodepng.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/c++/13/fstream \
  /usr/include/c++/13/bits/codecvt.h \
@@ -206,15 +219,6 @@ CMakeFiles/core.dir/src/Commands.cpp.o: \
  /usr/include/c++/13/bits/allocated_ptr.h \
  /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/bits/align.h \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/stl_tempbuf.h \
- /usr/include/c++/13/bits/ranges_algo.h \
- /usr/include/c++/13/bits/ranges_algobase.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/stb_image.h \
  /usr/include/c++/13/stdlib.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \

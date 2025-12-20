@@ -99,6 +99,13 @@ public:
     void execute() override;
 };
 
+class CommandShow : public ICommand {
+    SlideShow& ss;
+public:
+    explicit CommandShow(SlideShow& ss_) : ss(ss_) {}
+    void execute() override;
+};
+
 class CommandPrev : public ICommand {
     SlideShow& ss;
 public:

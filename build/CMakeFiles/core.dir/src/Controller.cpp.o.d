@@ -2,6 +2,8 @@ CMakeFiles/core.dir/src/Controller.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/Controller.cpp \
  /usr/include/stdc-predef.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Controller.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -59,9 +61,8 @@ CMakeFiles/core.dir/src/Controller.cpp.o: \
  /usr/include/c++/13/bits/ranges_util.h \
  /usr/include/c++/13/bits/ranges_base.h \
  /usr/include/c++/13/bits/max_size_type.h /usr/include/c++/13/numbers \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/string \
- /usr/include/c++/13/bits/stringfwd.h \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
  /usr/include/wchar.h \
@@ -127,20 +128,16 @@ CMakeFiles/core.dir/src/Controller.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/CommandParser.hpp \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
@@ -217,7 +214,13 @@ CMakeFiles/core.dir/src/Controller.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/../include/ICommand.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Commands.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Functions.hpp \
- /usr/include/c++/13/iostream \
+ /usr/include/c++/13/iostream /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/PPTXSerializer.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Color.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/lodepng.h \
@@ -237,10 +240,4 @@ CMakeFiles/core.dir/src/Controller.cpp.o: \
  /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/iomanip \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
- /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/ranges_algo.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h
+ /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h

@@ -1,48 +1,31 @@
 #include "gui/SlideList.hpp"
+#include <QSignalBlocker>
 
 SlideList::SlideList(QWidget* parent)
     : QListWidget(parent)
 {
-    connect(this, &QListWidget::currentRowChanged,
-            this, &SlideList::onSelectionChanged);
+    connect(this, &QListWidget::currentRowChanged, this, [this](int row) {
+        if (row >= 0) emit slideChosen(row);
+    });
 }
 
 void SlideList::showNoPresentation()
 {
-    suppress_ = true;
+    QSignalBlocker blocker(this);
     clear();
     addItem("<<no presentation>>");
-    item(0)->setFlags(item(0)->flags() & ~Qt::ItemIsSelectable);
     setCurrentRow(0);
-    suppress_ = false;
 }
 
-void SlideList::setSlideCount(int count, int currentIndex)
+void SlideList::setSlideCount(int count, int current)
 {
-    suppress_ = true;
-    clear();
+    QSignalBlocker blocker(this);
 
+    clear();
     for (int i = 0; i < count; ++i) {
         addItem(QString("Slide %1").arg(i + 1));
     }
-
     if (count > 0) {
-        if (currentIndex < 0) currentIndex = 0;
-        if (currentIndex >= count) currentIndex = count - 1;
-        setCurrentRow(currentIndex);
-    } else {
-        addItem("<<empty>>");
-        item(0)->setFlags(item(0)->flags() & ~Qt::ItemIsSelectable);
-        setCurrentRow(0);
+        setCurrentRow(std::max(0, std::min(current, count - 1)));
     }
-
-    suppress_ = false;
-}
-
-void SlideList::onSelectionChanged()
-{
-    if (suppress_) return;
-    int idx = currentRow();
-    if (idx >= 0)
-        emit slideChosen(idx);
 }

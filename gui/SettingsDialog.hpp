@@ -3,24 +3,25 @@
 #include <QDialog>
 
 class QCheckBox;
-class QDialogButtonBox;
 
 class SettingsDialog : public QDialog {
     Q_OBJECT
 public:
     explicit SettingsDialog(QWidget* parent = nullptr);
 
-    bool darkMode() const;
-    bool showGrid() const;
-    bool autosaveOnExit() const;
-
     void setDarkMode(bool on);
     void setShowGrid(bool on);
+    void setSnapToGrid(bool on);
     void setAutosaveOnExit(bool on);
 
+    bool darkMode() const;
+    bool showGrid() const;
+    bool snapToGrid() const;
+    bool autosaveOnExit() const;
+
 private:
-    QCheckBox* darkMode_ = nullptr;
-    QCheckBox* showGrid_ = nullptr;
+    QCheckBox* dark_ = nullptr;
+    QCheckBox* grid_ = nullptr;
+    QCheckBox* snap_ = nullptr;
     QCheckBox* autosave_ = nullptr;
-    QDialogButtonBox* buttons_ = nullptr;
 };

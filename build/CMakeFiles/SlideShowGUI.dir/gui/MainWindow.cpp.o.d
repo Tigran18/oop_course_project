@@ -410,24 +410,16 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/gui/QtLogStream.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QChar \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/gui/SettingsDialog.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QRegularExpression \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
@@ -454,7 +446,6 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
@@ -500,11 +491,27 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QSettings \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qsettings.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDockWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdockwidget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFormLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qformlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/QPalette \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
  /usr/include/c++/13/iostream \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Controller.hpp \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/CommandParser.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/../include/ICommand.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Commands.hpp \

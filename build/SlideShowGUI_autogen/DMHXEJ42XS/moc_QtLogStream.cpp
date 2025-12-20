@@ -118,8 +118,8 @@ void *QtLogStream::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_QtLogStream.stringdata0))
         return static_cast<void*>(this);
-    if (!strcmp(_clname, "std::basic_streambuf<char>"))
-        return static_cast< std::basic_streambuf<char>*>(this);
+    if (!strcmp(_clname, "std::streambuf"))
+        return static_cast< std::streambuf*>(this);
     return QObject::qt_metacast(_clname);
 }
 

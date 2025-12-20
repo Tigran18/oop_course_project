@@ -200,20 +200,25 @@ CMakeFiles/core.dir/src/CommandParser.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/../include/ICommand.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Commands.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Controller.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/SlideShow.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Slide.hpp \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/deque \
- /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Shape.hpp \
  /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/SlideShow.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Slide.hpp \
- /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Shape.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Functions.hpp \
- /usr/include/c++/13/iostream \
+ /usr/include/c++/13/iostream /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/PPTXSerializer.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Color.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/lodepng.h \
@@ -234,12 +239,6 @@ CMakeFiles/core.dir/src/CommandParser.cpp.o: \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/ranges_algo.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Tokenizer.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Token.hpp \
  /usr/include/c++/13/variant \

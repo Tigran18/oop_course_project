@@ -1,52 +1,67 @@
 #pragma once
-#include <vector>
-#include <deque>
-#include <string>
-#include <map>
 
 #include "SlideShow.hpp"
 
-class Controller {
-private:
-    std::vector<SlideShow> slideshows;
-    std::map<std::string, size_t> presentationIndex;
-    std::vector<std::string> presentationOrder;
-    size_t currentIndex = 0;
-    bool autoSaveOnExit = true;
+#include <vector>
+#include <string>
+#include <map>
 
-    std::deque<std::vector<SlideShow>> undoStack;
-    std::deque<std::vector<SlideShow>> redoStack;
-
-    Controller() = default;
-
-    void pushSnapshot();
-    void rebuildIndexAndOrder();
-
+class Controller
+{
 public:
     static Controller& instance();
 
-    void snapshot();
+    std::vector<SlideShow>& getSlideshows();
+    const std::vector<SlideShow>& getSlideshows() const;
+
+    std::vector<std::string>& getPresentationOrder();
+    const std::vector<std::string>& getPresentationOrder() const;
+
+    std::map<std::string, size_t>& getPresentationIndex();
+    const std::map<std::string, size_t>& getPresentationIndex() const;
+
+    size_t& getCurrentIndex();
+    size_t getCurrentIndex() const;
+
+    SlideShow& getCurrentSlideshow();
+    const SlideShow& getCurrentSlideshow() const;
 
     void rebuildUiIndex();
 
-    std::vector<SlideShow>& getSlideshows();
-    
-    const std::vector<SlideShow>& getSlideshows() const;
-
-    std::map<std::string, size_t>& getPresentationIndex();
-
-    std::vector<std::string>& getPresentationOrder();
-
-    size_t& getCurrentIndex();
-
-    SlideShow& getCurrentSlideshow();
-    
+    void setAutoSaveOnExit(bool on);
     bool getAutoSaveOnExit() const;
 
-    void setAutoSaveOnExit(bool b);
-
+    void snapshot();
     bool undo();
     bool redo();
 
     void run();
+
+private:
+    Controller() = default;
+
+    struct SnapshotState
+    {
+        std::vector<SlideShow> slideshows;
+        std::vector<std::string> order;
+        std::map<std::string, size_t> index;
+        size_t currentIndex = 0;
+        bool autosaveOnExit = false;
+    };
+
+    SnapshotState packState() const;
+    void restoreState(const SnapshotState& st);
+
+    void normalizeCurrentIndex();
+    void ensureOrderIndexConsistent();
+
+private:
+    std::vector<SlideShow> slideshows_;
+    std::vector<std::string> presentationOrder_;
+    std::map<std::string, size_t> presentationIndex_;
+    size_t currentIndex_ = 0;
+    bool autosaveOnExit_ = false;
+
+    std::vector<SnapshotState> undo_;
+    std::vector<SnapshotState> redo_;
 };

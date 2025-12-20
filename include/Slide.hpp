@@ -1,14 +1,19 @@
 #pragma once
-#include "Shape.hpp"
+
 #include <vector>
+#include "Shape.hpp"
 
-class Slide {
-private:
-    std::vector<Shape> shapes;
-
+class Slide
+{
 public:
-    void addShape(Shape s);
+    void addShape(const Shape& s);
+    void addShape(Shape&& s);
+
+    bool isEmpty() const;
+
     std::vector<Shape>& getShapes();
     const std::vector<Shape>& getShapes() const;
-    bool isEmpty() const;
+
+private:
+    std::vector<Shape> shapes_;
 };

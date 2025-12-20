@@ -1,11 +1,34 @@
 #include "SlideShow.hpp"
 #include "Color.hpp"
 #include <iostream>
+#include <stdexcept>
 
 SlideShow::SlideShow(std::string name) : filename(std::move(name)) {}
 
 const std::string& SlideShow::getFilename() const {
     return filename;
+}
+
+const std::string& SlideShow::getName() const {
+    return filename;
+}
+
+Slide& SlideShow::currentSlide() {
+    if (slides.empty()) {
+        throw std::runtime_error("No slide loaded");
+    }
+    if (currentIndex >= slides.size()) {
+        currentIndex = 0;
+    }
+    return slides[currentIndex];
+}
+
+const Slide& SlideShow::currentSlide() const {
+    if (slides.empty()) {
+        throw std::runtime_error("No slide loaded");
+    }
+    size_t idx = (currentIndex < slides.size()) ? currentIndex : 0;
+    return slides[idx];
 }
 
 std::vector<Slide>& SlideShow::getSlides() {

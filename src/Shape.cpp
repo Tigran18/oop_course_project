@@ -1,4 +1,5 @@
 #include "../include/Shape.hpp"
+
 #include <algorithm>
 #include <cctype>
 #include <string>
@@ -60,14 +61,23 @@ Shape::Shape(std::string n, int px, int py, std::vector<uint8_t> data)
 {
     name_ = std::move(n);
     text_ = name_;
-
     x_ = px;
     y_ = py;
-
     imageData_ = std::move(data);
     kind_ = ShapeKind::Image;
-    w_ = 0;
-    h_ = 0;
+    w_ = 1;
+    h_ = 1;
+}
+
+Shape::Shape(std::string n, int px, int py, ShapeKind k, int w, int h)
+{
+    name_ = std::move(n);
+    text_ = name_;
+    x_ = px;
+    y_ = py;
+    kind_ = k;
+    w_ = (w > 0) ? w : 220;
+    h_ = (h > 0) ? h : 80;
 }
 
 void Shape::parseSpecialSyntax(const std::string& raw)
@@ -89,11 +99,10 @@ void Shape::parseSpecialSyntax(const std::string& raw)
     size_t pos = isRect ? 4 : 7;
 
     int W = 220, H = 80;
-
     if (pos < s.size() && s[pos] == '(') {
         size_t close = s.find(')', pos);
         if (close != std::string::npos) {
-            std::string inside = s.substr(pos + 1, close - (pos + 1)); // "300,120"
+            std::string inside = s.substr(pos + 1, close - (pos + 1));
             size_t comma = inside.find(',');
             if (comma != std::string::npos) {
                 std::string ws = trimCopy(inside.substr(0, comma));
@@ -124,44 +133,28 @@ void Shape::parseSpecialSyntax(const std::string& raw)
     name_ = text_.empty() ? std::string(isRect ? "Rect" : "Ellipse") : text_;
 }
 
-const std::string& Shape::getName() const
-{
-    return text_.empty() ? name_ : text_;
-}
+const std::string& Shape::getName() const { return name_; }
+const std::string& Shape::getText() const { return text_; }
 
 int Shape::getX() const { return x_; }
 int Shape::getY() const { return y_; }
-
-const std::vector<uint8_t>& Shape::getImageData() const { return imageData_; }
-
-bool Shape::isImage() const { return kind_ == ShapeKind::Image; }
-
-ShapeKind Shape::kind() const { return kind_; }
-
-const std::string& Shape::getText() const
-{
-    return text_.empty() ? name_ : text_;
-}
-
 int Shape::getW() const { return w_; }
 int Shape::getH() const { return h_; }
 
-void Shape::setPos(int px, int py)
+void Shape::setX(int v) { x_ = v; }
+void Shape::setY(int v) { y_ = v; }
+void Shape::setW(int v) { if (v > 0) w_ = v; }
+void Shape::setH(int v) { if (v > 0) h_ = v; }
+
+void Shape::setText(const std::string& t)
 {
-    x_ = px;
-    y_ = py;
+    text_ = t;
+    if (kind_ != ShapeKind::Image) {
+        if (!t.empty()) name_ = t;
+    }
 }
 
-void Shape::setSize(int w, int h)
-{
-    if (kind_ == ShapeKind::Image) return;
-    if (w > 0) w_ = w;
-    if (h > 0) h_ = h;
-}
+ShapeKind Shape::kind() const { return kind_; }
 
-void Shape::setText(std::string t)
-{
-    text_ = std::move(t);
-    if (!text_.empty())
-        name_ = text_;
-}
+const std::vector<uint8_t>& Shape::getImageData() const { return imageData_; }
+bool Shape::isImage() const { return kind_ == ShapeKind::Image; }

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <vector>
 #include <cstdint>
@@ -10,7 +11,8 @@ enum class ShapeKind {
     Ellipse
 };
 
-class Shape {
+class Shape
+{
 private:
     std::string name_;
     std::string text_;
@@ -30,19 +32,24 @@ private:
 public:
     Shape(std::string n, int px, int py);
     Shape(std::string n, int px, int py, std::vector<uint8_t> data);
+    Shape(std::string n, int px, int py, ShapeKind k, int w, int h);
 
     const std::string& getName() const;
+    const std::string& getText() const;
+
     int getX() const;
     int getY() const;
-    const std::vector<uint8_t>& getImageData() const;
-    bool isImage() const;
-
-    ShapeKind kind() const;
-    const std::string& getText() const;
     int getW() const;
     int getH() const;
 
-    void setPos(int px, int py);
-    void setSize(int w, int h);
-    void setText(std::string t);
+    void setX(int v);
+    void setY(int v);
+    void setW(int v);
+    void setH(int v);
+    void setText(const std::string& t);
+
+    ShapeKind kind() const;
+
+    const std::vector<uint8_t>& getImageData() const;
+    bool isImage() const;
 };

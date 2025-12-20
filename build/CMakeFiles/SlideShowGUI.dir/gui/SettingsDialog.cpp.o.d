@@ -381,14 +381,15 @@ CMakeFiles/SlideShowGUI.dir/gui/SettingsDialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialogButtonBox \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialogbuttonbox.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QCheckBox \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcheckbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h

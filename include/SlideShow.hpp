@@ -13,6 +13,12 @@ public:
     explicit SlideShow(std::string name);
 
     const std::string& getFilename() const;
+    // Alias for older code / GUI convenience
+    const std::string& getName() const;
+
+    // Convenience accessors; throws std::out_of_range if there are no slides
+    Slide& currentSlide();
+    const Slide& currentSlide() const;
     std::vector<Slide>& getSlides();
     const std::vector<Slide>& getSlides() const;
     size_t getCurrentIndex() const;
