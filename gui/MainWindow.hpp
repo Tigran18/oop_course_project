@@ -58,7 +58,6 @@ private:
     QLineEdit* commandInput_ = nullptr;
     QTextEdit* log_ = nullptr;
 
-    // std::cout redirection -> GUI log
     QtLogStream* logStream_ = nullptr;
     std::streambuf* oldCout_ = nullptr;
     std::streambuf* oldCerr_ = nullptr;

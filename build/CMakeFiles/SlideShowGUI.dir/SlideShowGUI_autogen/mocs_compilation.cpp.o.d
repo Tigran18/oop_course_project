@@ -393,6 +393,8 @@ CMakeFiles/SlideShowGUI.dir/SlideShowGUI_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/build/SlideShowGUI_autogen/DMHXEJ42XS/moc_MainWindow.cpp \

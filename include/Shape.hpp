@@ -29,10 +29,9 @@ private:
 
 public:
     Shape(std::string n, int px, int py);
-
     Shape(std::string n, int px, int py, std::vector<uint8_t> data);
 
-    const std::string& getName() const; 
+    const std::string& getName() const;
     int getX() const;
     int getY() const;
     const std::vector<uint8_t>& getImageData() const;
@@ -42,4 +41,8 @@ public:
     const std::string& getText() const;
     int getW() const;
     int getH() const;
+
+    void setPos(int px, int py);
+    void setSize(int w, int h);
+    void setText(std::string t);
 };

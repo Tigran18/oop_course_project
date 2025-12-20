@@ -28,9 +28,7 @@ static bool startsWith(const std::string& s, const std::string& pref)
 
 static bool parseIntStrict(const std::string& s, int& out)
 {
-    if (s.empty()) {
-        return false;
-    }
+    if (s.empty()) return false;
     for (char c : s) {
         if (!std::isdigit(static_cast<unsigned char>(c)) && c != '-' && c != '+')
             return false;
@@ -81,7 +79,6 @@ void Shape::parseSpecialSyntax(const std::string& raw)
     bool isEllipse = startsWith(low, "ellipse");
 
     if (!isRect && !isEllipse) {
-        // plain text
         kind_ = ShapeKind::Text;
         name_ = s;
         text_ = s;
@@ -90,7 +87,9 @@ void Shape::parseSpecialSyntax(const std::string& raw)
 
     kind_ = isRect ? ShapeKind::Rect : ShapeKind::Ellipse;
     size_t pos = isRect ? 4 : 7;
+
     int W = 220, H = 80;
+
     if (pos < s.size() && s[pos] == '(') {
         size_t close = s.find(')', pos);
         if (close != std::string::npos) {
@@ -108,21 +107,20 @@ void Shape::parseSpecialSyntax(const std::string& raw)
             pos = close + 1;
         }
     }
+
     std::string textPart;
     size_t colon = s.find(':', pos);
     if (colon != std::string::npos) {
         textPart = trimCopy(s.substr(colon + 1));
-    } 
-    else {
-        if (pos < s.size()) {
+    } else {
+        if (pos < s.size())
             textPart = trimCopy(s.substr(pos));
-        }
     }
+
     w_ = W;
     h_ = H;
 
     text_ = textPart;
-
     name_ = text_.empty() ? std::string(isRect ? "Rect" : "Ellipse") : text_;
 }
 
@@ -131,35 +129,39 @@ const std::string& Shape::getName() const
     return text_.empty() ? name_ : text_;
 }
 
-int Shape::getX() const { 
-    return x_; 
-}
+int Shape::getX() const { return x_; }
+int Shape::getY() const { return y_; }
 
-int Shape::getY() const { 
-    return y_; 
-}
+const std::vector<uint8_t>& Shape::getImageData() const { return imageData_; }
 
-const std::vector<uint8_t>& Shape::getImageData() const { 
-    return imageData_; 
-}
+bool Shape::isImage() const { return kind_ == ShapeKind::Image; }
 
-bool Shape::isImage() const { 
-    return kind_ == ShapeKind::Image; 
-}
-
-ShapeKind Shape::kind() const { 
-    return kind_; 
-}
+ShapeKind Shape::kind() const { return kind_; }
 
 const std::string& Shape::getText() const
 {
     return text_.empty() ? name_ : text_;
 }
 
-int Shape::getW() const { 
-    return w_; 
+int Shape::getW() const { return w_; }
+int Shape::getH() const { return h_; }
+
+void Shape::setPos(int px, int py)
+{
+    x_ = px;
+    y_ = py;
 }
 
-int Shape::getH() const { 
-    return h_; 
+void Shape::setSize(int w, int h)
+{
+    if (kind_ == ShapeKind::Image) return;
+    if (w > 0) w_ = w;
+    if (h > 0) h_ = h;
+}
+
+void Shape::setText(std::string t)
+{
+    text_ = std::move(t);
+    if (!text_.empty())
+        name_ = text_;
 }
