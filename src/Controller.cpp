@@ -1,9 +1,9 @@
-#include "../include/Controller.hpp"
-#include "../include/CommandParser.hpp"
-#include "../include/Commands.hpp"
-#include "../include/SlideShow.hpp"
-#include "../include/Color.hpp"
-#include "../include/PPTXSerializer.hpp"
+#include "Controller.hpp"
+#include "CommandParser.hpp"
+#include "Commands.hpp"
+#include "SlideShow.hpp"
+#include "Color.hpp"
+#include "PPTXSerializer.hpp"
 
 #include <iostream>
 
@@ -19,6 +19,15 @@ SlideShow& Controller::getCurrentSlideshow() {
     }
     return slideshows[currentIndex];
 }
+
+void Controller::snapshot() {
+    pushSnapshot();
+}
+
+void Controller::rebuildUiIndex() {
+    rebuildIndexAndOrder();
+}
+
 
 void Controller::pushSnapshot() {
     std::vector<SlideShow> copy;

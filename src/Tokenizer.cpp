@@ -1,4 +1,4 @@
-#include "../include/Tokenizer.hpp"
+#include "Tokenizer.hpp"
 #include <cctype>
 
 std::vector<Token> Tokenizer::tokenizeCommandLine(const std::string& line) {

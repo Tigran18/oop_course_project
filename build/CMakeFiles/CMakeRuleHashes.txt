@@ -1,0 +1,7 @@
+# Hashes of file build rules.
+13acf1475a6bd2bee4d7e46f303ed160 CMakeFiles/SlideShowCLI_autogen
+13acf1475a6bd2bee4d7e46f303ed160 CMakeFiles/SlideShowGUI_autogen
+13acf1475a6bd2bee4d7e46f303ed160 CMakeFiles/core_autogen
+139ac6debeb9726f843a8f299a4982e0 SlideShowCLI_autogen/timestamp
+cbcc708e3943dcfc775126a2f469ef18 SlideShowGUI_autogen/timestamp
+c1f6221639bf77e57284d84d4300f712 core_autogen/timestamp

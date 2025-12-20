@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"C:/Users/HP/Desktop/Codes/oop_course_project/build/cmake_install.cmake"
+		"/home/tigranda35/Desktop/dir_projects/oop_course_project/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

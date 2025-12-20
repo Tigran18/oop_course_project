@@ -1,27 +1,165 @@
 #include "../include/Shape.hpp"
+#include <algorithm>
+#include <cctype>
+#include <string>
+
+static std::string toLowerCopy(std::string s)
+{
+    std::transform(s.begin(), s.end(), s.begin(),
+                   [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+    return s;
+}
+
+static std::string trimCopy(const std::string& s)
+{
+    size_t a = 0;
+    while (a < s.size() && std::isspace(static_cast<unsigned char>(s[a]))) ++a;
+
+    size_t b = s.size();
+    while (b > a && std::isspace(static_cast<unsigned char>(s[b - 1]))) --b;
+
+    return s.substr(a, b - a);
+}
+
+static bool startsWith(const std::string& s, const std::string& pref)
+{
+    return s.size() >= pref.size() && s.compare(0, pref.size(), pref) == 0;
+}
+
+static bool parseIntStrict(const std::string& s, int& out)
+{
+    if (s.empty()) {
+        return false;
+    }
+    for (char c : s) {
+        if (!std::isdigit(static_cast<unsigned char>(c)) && c != '-' && c != '+')
+            return false;
+    }
+    try {
+        out = std::stoi(s);
+        return true;
+    } catch (...) {
+        return false;
+    }
+}
 
 Shape::Shape(std::string n, int px, int py)
-    : name(std::move(n)), x(px), y(py) {}
+{
+    x_ = px;
+    y_ = py;
+
+    kind_ = ShapeKind::Text;
+    w_ = 220;
+    h_ = 80;
+
+    parseSpecialSyntax(n);
+
+    if (name_.empty()) name_ = text_;
+    if (text_.empty()) text_ = name_;
+}
 
 Shape::Shape(std::string n, int px, int py, std::vector<uint8_t> data)
-    : name(std::move(n)), x(px), y(py), imageData(std::move(data)), isImageFlag(true) {}
+{
+    name_ = std::move(n);
+    text_ = name_;
 
-const std::string& Shape::getName() const { 
-    return name; 
+    x_ = px;
+    y_ = py;
+
+    imageData_ = std::move(data);
+    kind_ = ShapeKind::Image;
+    w_ = 0;
+    h_ = 0;
+}
+
+void Shape::parseSpecialSyntax(const std::string& raw)
+{
+    std::string s = trimCopy(raw);
+    std::string low = toLowerCopy(s);
+
+    bool isRect = startsWith(low, "rect");
+    bool isEllipse = startsWith(low, "ellipse");
+
+    if (!isRect && !isEllipse) {
+        // plain text
+        kind_ = ShapeKind::Text;
+        name_ = s;
+        text_ = s;
+        return;
+    }
+
+    kind_ = isRect ? ShapeKind::Rect : ShapeKind::Ellipse;
+    size_t pos = isRect ? 4 : 7;
+    int W = 220, H = 80;
+    if (pos < s.size() && s[pos] == '(') {
+        size_t close = s.find(')', pos);
+        if (close != std::string::npos) {
+            std::string inside = s.substr(pos + 1, close - (pos + 1)); // "300,120"
+            size_t comma = inside.find(',');
+            if (comma != std::string::npos) {
+                std::string ws = trimCopy(inside.substr(0, comma));
+                std::string hs = trimCopy(inside.substr(comma + 1));
+                int wTmp = 0, hTmp = 0;
+                if (parseIntStrict(ws, wTmp) && parseIntStrict(hs, hTmp)) {
+                    if (wTmp > 0) W = wTmp;
+                    if (hTmp > 0) H = hTmp;
+                }
+            }
+            pos = close + 1;
+        }
+    }
+    std::string textPart;
+    size_t colon = s.find(':', pos);
+    if (colon != std::string::npos) {
+        textPart = trimCopy(s.substr(colon + 1));
+    } 
+    else {
+        if (pos < s.size()) {
+            textPart = trimCopy(s.substr(pos));
+        }
+    }
+    w_ = W;
+    h_ = H;
+
+    text_ = textPart;
+
+    name_ = text_.empty() ? std::string(isRect ? "Rect" : "Ellipse") : text_;
+}
+
+const std::string& Shape::getName() const
+{
+    return text_.empty() ? name_ : text_;
 }
 
 int Shape::getX() const { 
-    return x; 
+    return x_; 
 }
 
 int Shape::getY() const { 
-    return y; 
+    return y_; 
 }
 
 const std::vector<uint8_t>& Shape::getImageData() const { 
-    return imageData; 
+    return imageData_; 
 }
 
 bool Shape::isImage() const { 
-    return isImageFlag; 
+    return kind_ == ShapeKind::Image; 
+}
+
+ShapeKind Shape::kind() const { 
+    return kind_; 
+}
+
+const std::string& Shape::getText() const
+{
+    return text_.empty() ? name_ : text_;
+}
+
+int Shape::getW() const { 
+    return w_; 
+}
+
+int Shape::getH() const { 
+    return h_; 
 }

@@ -1,7 +1,7 @@
-#include "../include/PPTXSerializer.hpp"
-#include "../include/SlideShow.hpp"
-#include "../include/Slide.hpp"
-#include "../include/shape.hpp"
+#include "PPTXSerializer.hpp"
+#include "SlideShow.hpp"
+#include "Slide.hpp"
+#include "Shape.hpp"
 
 #include <zip.h>
 #include <sstream>

@@ -25,6 +25,10 @@ private:
 public:
     static Controller& instance();
 
+    void snapshot();
+
+    void rebuildUiIndex();
+
     std::vector<SlideShow>& getSlideshows();
     
     const std::vector<SlideShow>& getSlideshows() const;

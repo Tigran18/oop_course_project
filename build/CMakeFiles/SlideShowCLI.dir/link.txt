@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/SlideShowCLI.dir/link.d CMakeFiles/SlideShowCLI.dir/SlideShowCLI_autogen/mocs_compilation.cpp.o CMakeFiles/SlideShowCLI.dir/src/main.cpp.o -o SlideShowCLI  libcore.a -lzip

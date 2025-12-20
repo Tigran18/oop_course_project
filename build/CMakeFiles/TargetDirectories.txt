@@ -1,3 +1,11 @@
-C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/SlideShow.dir
-C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/HP/Desktop/Codes/oop_course_project/build/CMakeFiles/ZERO_CHECK.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/core.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowCLI.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowGUI.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/edit_cache.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/rebuild_cache.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/core_autogen_timestamp_deps.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/core_autogen.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowCLI_autogen.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir
+/home/tigranda35/Desktop/dir_projects/oop_course_project/build/CMakeFiles/SlideShowGUI_autogen.dir

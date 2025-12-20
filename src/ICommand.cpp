@@ -1,3 +1,3 @@
-#include "../include/ICommand.hpp"
+#include "ICommand.hpp"
 
 ICommand::~ICommand() = default;

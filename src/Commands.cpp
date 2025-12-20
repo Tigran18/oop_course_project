@@ -1,7 +1,7 @@
-#include "../include/Commands.hpp"
+#include "Commands.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../include/stb_image.h"
+#include "stb_image.h"
 
 namespace fs = std::filesystem;
 

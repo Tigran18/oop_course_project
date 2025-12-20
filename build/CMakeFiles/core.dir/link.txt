@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcore.a CMakeFiles/core.dir/core_autogen/mocs_compilation.cpp.o CMakeFiles/core.dir/src/CommandParser.cpp.o CMakeFiles/core.dir/src/Commands.cpp.o CMakeFiles/core.dir/src/Controller.cpp.o CMakeFiles/core.dir/src/ICommand.cpp.o CMakeFiles/core.dir/src/PPTXSerializer.cpp.o CMakeFiles/core.dir/src/Shape.cpp.o CMakeFiles/core.dir/src/Slide.cpp.o CMakeFiles/core.dir/src/SlideShow.cpp.o CMakeFiles/core.dir/src/Token.cpp.o CMakeFiles/core.dir/src/Tokenizer.cpp.o CMakeFiles/core.dir/src/lodepng.cpp.o
+/usr/bin/ranlib libcore.a

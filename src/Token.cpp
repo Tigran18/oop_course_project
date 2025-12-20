@@ -1,4 +1,4 @@
-#include "../include/Token.hpp"
+#include "Token.hpp"
 #include <sstream>
 
 std::string Token::asString() const {
