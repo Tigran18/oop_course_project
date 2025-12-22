@@ -2,14 +2,10 @@
 
 #include <QObject>
 #include <QString>
-#include <QChar>
 #include <streambuf>
 
-/*
- * Redirects std::cout/std::cerr into Qt via signal.
- * Emits complete lines (on '\n'), and also supports bulk writes (xsputn).
- */
-class QtLogStream : public QObject, public std::basic_streambuf<char> {
+class QtLogStream : public QObject, public std::streambuf
+{
     Q_OBJECT
 public:
     explicit QtLogStream(QObject* parent = nullptr);
@@ -19,9 +15,8 @@ signals:
 
 protected:
     int overflow(int ch) override;
-    std::streamsize xsputn(const char* s, std::streamsize n) override;
+    int sync() override;
 
 private:
-    void flushLineIfNeeded();
     QString buffer_;
 };

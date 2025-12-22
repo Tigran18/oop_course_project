@@ -1,17 +1,26 @@
 #include "Slide.hpp"
 
-void Slide::addShape(Shape s) {
-    shapes.push_back(std::move(s));
+void Slide::addShape(const Shape& s)
+{
+    shapes_.push_back(s);
 }
 
-std::vector<Shape>& Slide::getShapes() {
-    return shapes;
+void Slide::addShape(Shape&& s)
+{
+    shapes_.push_back(std::move(s));
 }
 
-const std::vector<Shape>& Slide::getShapes() const {
-    return shapes;
+bool Slide::isEmpty() const
+{
+    return shapes_.empty();
 }
 
-bool Slide::isEmpty() const {
-    return shapes.empty();
+std::vector<Shape>& Slide::getShapes()
+{
+    return shapes_;
+}
+
+const std::vector<Shape>& Slide::getShapes() const
+{
+    return shapes_;
 }

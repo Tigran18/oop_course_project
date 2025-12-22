@@ -16,6 +16,24 @@ const std::vector<Slide>& SlideShow::getSlides() const {
     return slides;
 }
 
+Slide& SlideShow::currentSlide() {
+    if (slides.empty()) {
+        throw std::runtime_error("No slides in presentation");
+    }
+    if (currentIndex >= slides.size()) {
+        currentIndex = 0;
+    }
+    return slides[currentIndex];
+}
+
+const Slide& SlideShow::currentSlide() const {
+    if (slides.empty()) {
+        throw std::runtime_error("No slides in presentation");
+    }
+    const size_t idx = (currentIndex < slides.size()) ? currentIndex : 0;
+    return slides[idx];
+}
+
 size_t SlideShow::getCurrentIndex() const {
     return currentIndex;
 }

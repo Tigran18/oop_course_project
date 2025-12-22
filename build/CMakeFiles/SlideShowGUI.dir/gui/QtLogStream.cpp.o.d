@@ -334,6 +334,4 @@ CMakeFiles/SlideShowGUI.dir/gui/QtLogStream.cpp.o: \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
  /usr/include/c++/13/charconv /usr/include/c++/13/span \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QChar \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h

@@ -398,4 +398,6 @@ CMakeFiles/SlideShowGUI.dir/gui/SlideList.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
- /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QSignalBlocker \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h

@@ -8,14 +8,8 @@ public:
     explicit SlideList(QWidget* parent = nullptr);
 
     void showNoPresentation();
-    void setSlideCount(int count, int currentIndex);
+    void setSlideCount(int count, int current);
 
 signals:
-    void slideChosen(int index); // 0-based
-
-private slots:
-    void onSelectionChanged();
-
-private:
-    bool suppress_ = false;
+    void slideChosen(int index);
 };

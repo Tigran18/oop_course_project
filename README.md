@@ -1,142 +1,153 @@
-# OOP Course Project: Multi-PPTX CLI Slideshow
+# SlideShow (CLI + Qt GUI) — OOP Course Project
 
-This project is a **C++ command-line application** that simulates a slideshow for multiple presentations defined in text files. Each "presentation" file contains shapes positioned on slides, separated by `---`. The application demonstrates object-oriented programming principles, including classes for shapes, slides, slideshows, tokenizing input, and command parsing.
+A small presentation editor/viewer written in **C++20** with:
 
-It supports loading multiple files, navigating between slides and presentations, and displaying shape information via console output. Built with C++11+ features, it uses standard libraries for file I/O, string manipulation, and containers.
+- **`SlideShowGUI`** — a Qt6 GUI where you can add slides, add shapes, drag them around, edit properties, and save/load `.pptx`.
+- **`SlideShowCLI`** — a command-driven interface that exposes the same core logic.
 
----
-
-## **Project Structure**
+The project is structured so that **core logic is independent from the UI**:
 
 ```
-oop_course_project/
-│
-├─ .vscode/                   # VSCode configuration files (optional)
-├─ build/                     # Build output folder
-├─ include/
-│   ├─ Shape.hpp              # Shape class declaration
-│   ├─ Slide.hpp              # Slide class declaration
-│   ├─ SlideShow.hpp          # SlideShow class declaration
-│   ├─ Tokenizer.hpp          # Tokenizer class declaration
-│   └─ CommandParser.hpp      # CommandParser class declaration
-├─ src/
-│   ├─ Shape.cpp              # Shape implementation
-│   ├─ Slide.cpp              # Slide implementation
-│   ├─ SlideShow.cpp          # SlideShow implementation
-│   ├─ Tokenizer.cpp          # Tokenizer implementation
-│   ├─ CommandParser.cpp      # CommandParser implementation
-│   └─ main.cpp               # Main CLI program
-├─ CMakeLists.txt             # Build configuration (assumed for CMake build)
-└─ README.md                  # Project description
+SlideShowCLI  ─┐
+              ├──>  core (library)  <── PPTXSerializer (OpenXML + libzip)
+SlideShowGUI  ─┘
 ```
 
 ---
 
-## **Features**
+## Features
 
-- **Load Multiple Presentations**: Accepts multiple text files as command-line arguments, parsing them into slides with shapes.
-- **Slide Navigation**:
-  - `next`: Move to the next slide in the current presentation.
-  - `prev`: Move to the previous slide in the current presentation.
-  - `show`: Display the current slide's shapes.
-  - `goto <n>`: Jump to slide number `n` (1-based) in the current presentation.
-  - `goto <filename> <n>`: Jump to slide number `n` in the specified presentation (supports filenames with or without `./` prefix).
-- **Presentation Navigation**:
-  - `nextfile`: Switch to the next loaded presentation and show its current slide.
-  - `prevfile`: Switch to the previous loaded presentation and show its current slide.
-- **Help and Exit**:
-  - `help`: Display a list of available commands.
-  - `exit`: Exit the program.
-- **Input File Format**: Text files with lines like `ShapeName, x, y` for shapes on a slide, separated by `---` for new slides. Example:
-  ```
-  Circle, 10, 20
-  Square, 30, 40
-  ---
-  Triangle, 50, 60
-  Rectangle, 70, 80
-  ```
-- **Error Handling**: Graceful handling of invalid commands, slide numbers, filenames, and empty presentations.
-- **Prompt**: Dynamic CLI prompt showing current presentation filename and slide position (e.g., `[.\pp1.txt, Slide 1/2] > `).
+### Editing
+- Create slides
+- Add **Text**, **Rectangle**, **Ellipse**, and **Image** shapes
+- Drag shapes with the mouse (GUI)
+- Edit shape properties (X/Y/W/H/Text) from the Properties panel
+- Undo/Redo (GUI + CLI)
+
+### PPTX support
+- Save presentations to **`.pptx`** (OpenXML)
+- Load `.pptx` created by this program
+- Importing slides with images works (images are scaled using the PPTX geometry)
+
+> Note: This is *not* a full PowerPoint implementation. It writes/reads a practical subset of the OpenXML format.
 
 ---
 
-## **Usage**
+## Repository structure
 
-### **Build**
+```
+.
+├── CMakeLists.txt
+├── include/                 # public headers (core API)
+├── src/                     # core implementation
+├── gui/                     # Qt GUI sources
+├── qt_main.cpp              # GUI entry point
+└── README.md
+```
 
-Use CMake to build the project:
+### Key components
+
+- **Model objects**
+  - `SlideShow` → `Slide` → `Shape`
+  - `ShapeKind`: `Text`, `Rect`, `Ellipse`, `Image`
+
+- **Controller**
+  - Holds the loaded presentations
+  - Manages current slideshow/slide index
+  - Stores Undo/Redo snapshots
+
+- **Command parser (CLI + GUI command bar)**
+  - Converts text commands (e.g. `next`, `goto 3`, `save out.pptx`, `undo`) into actions on the controller/model
+
+- **PPTXSerializer**
+  - Writes OpenXML parts into a `.pptx` using **libzip**
+  - Reads the same subset back
+
+---
+
+## Dependencies
+
+### Ubuntu / Debian
+```bash
+sudo apt update
+sudo apt install \
+  build-essential cmake pkg-config \
+  qt6-base-dev qt6-base-dev-tools qt6-tools-dev \
+  libzip-dev
+```
+
+---
+
+## Build
 
 ```bash
-mkdir build
+mkdir -p build
 cd build
 cmake ..
-cmake --build . --config Release
+cmake --build . -j
 ```
 
-This generates `SlideShow.exe` (or `SlideShow` on Unix-like systems) in `build/Release`.
+Outputs:
+- `build/SlideShowGUI`
+- `build/SlideShowCLI`
 
 ---
 
-### **Run**
+## Run
 
-Run the executable with one or more text files as arguments:
-
+### GUI
 ```bash
-.\Release\SlideShow.exe .\pp1.txt .\pp2.txt .\pp3.txt
+./build/SlideShowGUI
 ```
 
-- The program loads the files and enters an interactive CLI mode.
-- Type commands at the prompt and press Enter.
-
-### **Commands**
-
-
-| Command              | Description |
-|----------------------|-------------|
-| `next`               | Move to the next slide in the current presentation. |
-| `prev`               | Move to the previous slide in the current presentation. |
-| `show`               | Display the current slide's shapes (e.g., "Drawing shape: Circle at (10, 20)"). |
-| `nextfile`           | Switch to the next presentation and show its current slide. |
-| `prevfile`           | Switch to the previous presentation and show its current slide. |
-| `goto <filename> <n>`| Jump to slide number `n` (1-based) in the specified presentation (e.g., `goto pp1.txt 2` or `goto .\pp1.txt 2`). |
-| `goto <n>`           | Jump to slide number `n` (1-based) in the current presentation. |
-| `help`               | Show the list of available commands. |
-| `exit`               | Exit the slideshow. |
-
-> Notes:
-> - Commands are case-insensitive.
-> - Invalid commands or arguments show error messages (e.g., unknown command, invalid slide number).
-> - If a filename is not found in `goto`, it lists available presentations for reference.
+### CLI
+```bash
+./build/SlideShowCLI
+```
 
 ---
 
-## **Development Notes**
+## GUI workflow
 
-- **Classes and Components**:
-  - `Shape`: Represents a shape with name and position (x, y).
-  - `Slide`: Contains a vector of shapes and methods to add/show them.
-  - `SlideShow`: Manages slides for a single file, with navigation methods (next, prev, gotoSlide).
-  - `Tokenizer`: Splits lines by delimiter (e.g., comma) for parsing shape data, with trimming.
-  - `CommandParser`: Tokenizes and parses CLI input, validates commands, and normalizes paths.
-- **Dependencies**: Standard C++ libraries (`<iostream>`, `<fstream>`, `<string>`, `<vector>`, `<map>`, `<algorithm>`, `<cctype>`, `<sstream>`).
-- **Build System**: CMake for cross-platform compilation. Assumes source files in `src/` and headers in `include/`.
-- **Error Logging**: Uses console output with prefixes like `[INFO]`, `[WARN]`, `[ERR]` for messages.
-- **Path Normalization**: Filenames are normalized (lowercase, `/` separators, strip `./` prefix) for case-insensitive matching.
+1. **New Slide** → adds a slide
+2. **Rectangle / Ellipse / Text / Image** → inserts a shape
+3. Drag a shape with the mouse to move it
+4. Select a shape → edit X/Y/W/H/Text in the Properties panel → **Apply**
+5. Use the command bar (bottom) for commands like `save out.pptx`, `open file.pptx`, `undo`, `redo`, etc.
 
 ---
 
-## **Future Improvements**
+## CLI commands (common)
 
-- **Real PPTX Support**: Integrate a library like OpenXML or libpptx to parse actual `.pptx` files.
-- **Advanced Commands**: Add `search` for shapes, `edit` to modify slides interactively, or `save` to export changes.
-- **GUI Integration**: Extend to a graphical interface using SFML, Qt, or SDL for visual rendering of shapes.
-- **Shape Enhancements**: Add more properties (e.g., color, size) and rendering options.
-- **Performance**: Optimize for large files with lazy loading of slides.
-- **Testing**: Add unit tests using Google Test or Catch2 for classes like Tokenizer and CommandParser.
+- `new` — create a new empty presentation
+- `newslide` — add a slide
+- `rect ...`, `ellipse ...`, `text ...`, `image ...` — add shapes
+- `next`, `prev`, `goto N` — navigate slides
+- `open file.pptx` — load pptx
+- `save out.pptx` — save pptx
+- `undo`, `redo`
+- `help`
+
+(Exact parsing is implemented in `CommandParser`.)
 
 ---
 
-## **Author**
+## Notes
 
-Tigran Davtyan  
-Bachelor's student at NPUA, OOP course project
+### Why there is a `build-asan/` directory
+`ASAN` usually means **AddressSanitizer** — a special build configuration that detects memory bugs (use-after-free, buffer overflows, etc.).
+
+A typical ASan build looks like:
+```bash
+cmake -S . -B build-asan -DCMAKE_BUILD_TYPE=Debug \
+  -DCMAKE_CXX_FLAGS="-fsanitize=address -fno-omit-frame-pointer"
+cmake --build build-asan -j
+```
+
+You normally **do not commit** `build/` or `build-asan/` folders to git.
+
+---
+
+## License / Author
+
+OOP course project.

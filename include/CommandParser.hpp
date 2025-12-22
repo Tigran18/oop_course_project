@@ -1,9 +1,10 @@
 #pragma once
-#include <memory>
 #include <istream>
-#include "../include/ICommand.hpp"
+#include <memory>
+
+class ICommand;
 
 class CommandParser {
 public:
-    std::unique_ptr<ICommand> parse(std::istream& in);
+    static std::unique_ptr<ICommand> parse(std::istream& in);
 };

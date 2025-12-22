@@ -15,6 +15,11 @@ public:
     const std::string& getFilename() const;
     std::vector<Slide>& getSlides();
     const std::vector<Slide>& getSlides() const;
+
+    // Convenience accessors used by the GUI.
+    // Throws if there are no slides.
+    Slide& currentSlide();
+    const Slide& currentSlide() const;
     size_t getCurrentIndex() const;
     void setCurrentIndex(size_t idx);
 

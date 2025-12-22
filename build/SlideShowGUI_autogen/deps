@@ -13,8 +13,6 @@ SlideShowGUI_autogen/timestamp: \
 	/home/tigranda35/Desktop/dir_projects/oop_course_project/gui/SettingsDialog.hpp \
 	/home/tigranda35/Desktop/dir_projects/oop_course_project/gui/SlideList.cpp \
 	/home/tigranda35/Desktop/dir_projects/oop_course_project/gui/SlideList.hpp \
-	/home/tigranda35/Desktop/dir_projects/oop_course_project/include/Shape.hpp \
-	/home/tigranda35/Desktop/dir_projects/oop_course_project/include/Slide.hpp \
 	/home/tigranda35/Desktop/dir_projects/oop_course_project/qt_main.cpp \
 	/snap/cmake/1507/share/cmake-4.2/Modules/CMakeCXXCompiler.cmake.in \
 	/snap/cmake/1507/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp \
@@ -402,9 +400,7 @@ SlideShowGUI_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
-	/usr/include/x86_64-linux-gnu/qt6/QtCore/QChar \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
-	/usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
@@ -522,7 +518,6 @@ SlideShowGUI_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
-	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsScene \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGraphicsView \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
 	/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
