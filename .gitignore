@@ -22,4 +22,5 @@ SlideShowGUI
 # Generated PPTX / output
 *.pptx
 output.txt
+*.zip
 
