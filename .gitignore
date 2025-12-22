@@ -1,0 +1,25 @@
+# Build artifacts
+build/
+CMakeFiles/
+*.o
+*.a
+*.so
+*.exe
+
+# Qt / CMake
+*_autogen/
+moc_*.cpp
+moc_*.cpp.d
+CMakeCache.txt
+
+# Binaries
+SlideShowCLI
+SlideShowGUI
+
+# Archives
+*.zip
+
+# Generated PPTX / output
+*.pptx
+output.txt
+
