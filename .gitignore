@@ -1,26 +1,35 @@
-# Build artifacts
+# CMake build outputs
 build/
+build-*/
 CMakeFiles/
-*.o
-*.a
-*.so
-*.exe
-
-# Qt / CMake
-*_autogen/
-moc_*.cpp
-moc_*.cpp.d
 CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+*.ninja_deps
+*.ninja_log
+
+# Qt autogen
+*_autogen/
 
 # Binaries
 SlideShowCLI
 SlideShowGUI
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.obj
 
-# Archives
-*.zip
+# Editor
+.vscode/
+*.code-workspace
 
-# Generated PPTX / output
-*.pptx
-output.txt
-*.zip
+# OS junk
+.DS_Store
+Thumbs.db
 
+# Windows "Mark of the Web" alternate stream files that sometimes appear on WSL copies
+*:Zone.Identifier

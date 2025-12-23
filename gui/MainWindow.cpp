@@ -38,6 +38,7 @@
 #include <algorithm>
 
 #include "Controller.hpp"
+#include "FitUtils.hpp"
 #include "CommandParser.hpp"
 #include "ICommand.hpp"
 #include "Commands.hpp"
@@ -466,17 +467,8 @@ void MainWindow::addImageShape()
         int h = img.height();
 
         // Fit into the 960x540 canvas while preserving aspect ratio.
-        const int maxW = 960;
-        const int maxH = 540;
-        if (w > maxW || h > maxH) {
-            double sx = (double)maxW / (double)w;
-            double sy = (double)maxH / (double)h;
-            double s = std::min(sx, sy);
-            w = std::max(1, (int)std::round(w * s));
-            h = std::max(1, (int)std::round(h * s));
-        }
-
-        sh.setW(w);
+        fitKeepAspect(w, h, 960, 540);
+sh.setW(w);
         sh.setH(h);
     }
 

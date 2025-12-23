@@ -2,6 +2,7 @@
 #include "SlideShow.hpp"
 #include "Slide.hpp"
 #include "Shape.hpp"
+#include "FitUtils.hpp"
 
 #include <zip.h>
 #include <sstream>
@@ -11,8 +12,10 @@
 #include <regex>
 #include <cstdlib>
 #include <cstring>
+#include <cctype>
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 
 namespace {
 // Canvas space used by the Qt editor.
@@ -75,6 +78,133 @@ static void addBinaryPart(zip_t* zip,
         return;
     }
     zip_file_add(zip, name.c_str(), src, ZIP_FL_OVERWRITE);
+}
+
+// -------------------------
+// Image sniffing (png/jpg/gif/bmp) for correct export
+// -------------------------
+enum class ImageFmt { Png, Jpeg, Gif, Bmp, Unknown };
+
+static ImageFmt detectImageFormat(const std::vector<uint8_t>& data);
+static const char* imageExt(ImageFmt f);
+
+static bool parsePngWH(const std::vector<uint8_t>& data, int& w, int& h);
+static bool parseJpegWH(const std::vector<uint8_t>& data, int& w, int& h);
+static bool parseGifWH(const std::vector<uint8_t>& data, int& w, int& h);
+static bool parseBmpWH(const std::vector<uint8_t>& data, int& w, int& h);
+
+static inline uint16_t readLE16(const uint8_t* p) {
+    return static_cast<uint16_t>(p[0] | (uint16_t(p[1]) << 8));
+}
+
+static bool parseImageWH(const std::vector<uint8_t>& data, int& w, int& h)
+{
+    const ImageFmt f = detectImageFormat(data);
+    switch (f) {
+        case ImageFmt::Png:  return parsePngWH(data, w, h);
+        case ImageFmt::Jpeg: return parseJpegWH(data, w, h);
+        case ImageFmt::Gif:  return parseGifWH(data, w, h);
+        case ImageFmt::Bmp:  return parseBmpWH(data, w, h);
+        default:             return false;
+    }
+}
+
+
+static inline uint32_t readLE32(const uint8_t* p) {
+    return static_cast<uint32_t>(p[0] | (uint32_t(p[1]) << 8) | (uint32_t(p[2]) << 16) | (uint32_t(p[3]) << 24));
+}
+
+static ImageFmt detectImageFormat(const std::vector<uint8_t>& data)
+{
+    if (data.size() >= 8 &&
+        data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47 &&
+        data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A) {
+        return ImageFmt::Png;
+    }
+    if (data.size() >= 3 && data[0] == 0xFF && data[1] == 0xD8 && data[2] == 0xFF) {
+        return ImageFmt::Jpeg;
+    }
+    if (data.size() >= 6 &&
+        data[0] == 'G' && data[1] == 'I' && data[2] == 'F' && data[3] == '8' &&
+        (data[4] == '7' || data[4] == '9') && data[5] == 'a') {
+        return ImageFmt::Gif;
+    }
+    if (data.size() >= 2 && data[0] == 'B' && data[1] == 'M') {
+        return ImageFmt::Bmp;
+    }
+    return ImageFmt::Unknown;
+}
+
+static const char* imageExt(ImageFmt f)
+{
+    switch (f) {
+        case ImageFmt::Png:  return "png";
+        case ImageFmt::Jpeg: return "jpg";
+        case ImageFmt::Gif:  return "gif";
+        case ImageFmt::Bmp:  return "bmp";
+        default:             return "png";
+    }
+}
+
+static bool parseJpegWH(const std::vector<uint8_t>& data, int& w, int& h)
+{
+    // Parse SOF markers (baseline/progressive/etc).
+    w = h = 0;
+    if (data.size() < 4 || data[0] != 0xFF || data[1] != 0xD8) return false;
+
+    size_t i = 2;
+    while (i + 3 < data.size()) {
+        if (data[i] != 0xFF) { ++i; continue; }
+
+        while (i < data.size() && data[i] == 0xFF) ++i;
+        if (i >= data.size()) break;
+
+        const uint8_t marker = data[i++];
+
+        if (marker == 0xD9 /*EOI*/ || marker == 0xDA /*SOS*/) break;
+
+        if (i + 1 >= data.size()) break;
+        const uint16_t len = static_cast<uint16_t>(data[i] << 8 | data[i + 1]);
+        if (len < 2 || i + len - 2 >= data.size()) break;
+
+        const bool isSOF =
+            (marker >= 0xC0 && marker <= 0xC3) ||
+            (marker >= 0xC5 && marker <= 0xC7) ||
+            (marker >= 0xC9 && marker <= 0xCB) ||
+            (marker >= 0xCD && marker <= 0xCF);
+
+        if (isSOF) {
+            if (len >= 7) {
+                const size_t p = i + 2;
+                h = static_cast<int>(data[p + 1] << 8 | data[p + 2]);
+                w = static_cast<int>(data[p + 3] << 8 | data[p + 4]);
+                return (w > 0 && h > 0);
+            }
+            return false;
+        }
+
+        i += len;
+    }
+    return false;
+}
+
+static bool parseGifWH(const std::vector<uint8_t>& data, int& w, int& h)
+{
+    w = h = 0;
+    if (data.size() < 10) return false;
+    w = static_cast<int>(readLE16(&data[6]));
+    h = static_cast<int>(readLE16(&data[8]));
+    return (w > 0 && h > 0);
+}
+
+static bool parseBmpWH(const std::vector<uint8_t>& data, int& w, int& h)
+{
+    w = h = 0;
+    if (data.size() < 26) return false;
+    w = static_cast<int>(readLE32(&data[18]));
+    h = static_cast<int>(readLE32(&data[22]));
+    if (h < 0) h = -h;
+    return (w > 0 && h > 0);
 }
 
 static bool parsePngWH(const std::vector<uint8_t>& data, int& w, int& h)
@@ -204,14 +334,72 @@ static void extractExtWHEmu(const std::string& xml, long long& w, long long& h)
     }
 }
 
+static void extractSrcRectPct(const std::string& xml, int& l, int& t, int& r, int& b)
+{
+    l = t = r = b = 0;
+
+    size_t p = xml.find("<a:srcRect");
+    if (p == std::string::npos) return;
+
+    auto readAttr = [&](const char* key, int& out) {
+        size_t k = xml.find(key, p);
+        if (k == std::string::npos) return;
+        k += std::strlen(key);
+        size_t e = xml.find('"', k);
+        if (e == std::string::npos) return;
+        try {
+            out = std::stoi(xml.substr(k, e - k));
+        } catch (...) {
+            out = 0;
+        }
+        if (out < 0) out = 0;
+        if (out > 100000) out = 100000;
+    };
+
+    readAttr("l=\"", l);
+    readAttr("t=\"", t);
+    readAttr("r=\"", r);
+    readAttr("b=\"", b);
+
+    // Prevent invalid crop that removes the whole image.
+    if (l + r > 99999) r = std::max(0, 99999 - l);
+    if (t + b > 99999) b = std::max(0, 99999 - t);
+}
+
+
 static std::string extractFirstTextAT(const std::string& xml)
 {
-    size_t a = xml.find("<a:t>");
-    if (a == std::string::npos) return "";
-    a += 5;
-    size_t b = xml.find("</a:t>", a);
-    if (b == std::string::npos) return "";
-    return xml.substr(a, b - a);
+    std::string out;
+    size_t pos = 0;
+
+    while (true) {
+        size_t a = xml.find("<a:t>", pos);
+        if (a == std::string::npos) break;
+        a += 5;
+        size_t b = xml.find("</a:t>", a);
+        if (b == std::string::npos) break;
+
+        std::string piece = xml.substr(a, b - a);
+        for (char& c : piece) {
+            if (c == '\t' || c == '\n' || c == '\r') c = ' ';
+        }
+
+        if (!piece.empty()) {
+            if (!out.empty() && out.back() != ' ' && piece.front() != ' ') out.push_back(' ');
+            out += piece;
+        }
+
+        pos = b + 6;
+    }
+
+    // trim
+    auto is_ws = [](unsigned char ch) { return std::isspace(ch) != 0; };
+    size_t i = 0;
+    while (i < out.size() && is_ws(static_cast<unsigned char>(out[i]))) ++i;
+    size_t j = out.size();
+    while (j > i && is_ws(static_cast<unsigned char>(out[j - 1]))) --j;
+
+    return out.substr(i, j - i);
 }
 
 static std::string extractCNvPrName(const std::string& block)
@@ -253,6 +441,39 @@ static int emuToPxY(long long emu, long long slideCy)
 {
     return static_cast<int>((emu * kCanvasH + slideCy / 2) / slideCy);
 }
+
+// Map slide EMUs (any aspect) into our fixed 960x540 (16:9) canvas without distortion.
+// We letterbox/pillarbox by centering the fitted content.
+struct CanvasMap
+{
+    double scale = 1.0;
+    double offX  = 0.0;
+    double offY  = 0.0;
+
+    static CanvasMap fromSlide(long long slideCx, long long slideCy)
+    {
+        CanvasMap m;
+        if (slideCx <= 0 || slideCy <= 0) return m;
+
+        const double sx = double(kCanvasW) / double(slideCx);
+        const double sy = double(kCanvasH) / double(slideCy);
+        m.scale = std::min(sx, sy);
+
+        const double fittedW = double(slideCx) * m.scale;
+        const double fittedH = double(slideCy) * m.scale;
+
+        m.offX = (double(kCanvasW) - fittedW) / 2.0;
+        m.offY = (double(kCanvasH) - fittedH) / 2.0;
+        return m;
+    }
+
+    int x(long long emu) const { return int(std::llround(offX + double(emu) * scale)); }
+    int y(long long emu) const { return int(std::llround(offY + double(emu) * scale)); }
+    int w(long long emu) const { return int(std::llround(double(emu) * scale)); }
+    int h(long long emu) const { return int(std::llround(double(emu) * scale)); }
+};
+
+
 
 static std::string theme1Xml()
 {
@@ -368,13 +589,19 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
           << R"(<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>)"
           << R"(<Default Extension="xml"  ContentType="application/xml"/>)"
           << R"(<Default Extension="png"  ContentType="image/png"/>)"
+          << R"(<Default Extension="jpg"  ContentType="image/jpeg"/>)"
+          << R"(<Default Extension="jpeg" ContentType="image/jpeg"/>)"
+          << R"(<Default Extension="gif"  ContentType="image/gif"/>)"
+          << R"(<Default Extension="bmp"  ContentType="image/bmp"/>)"
           << R"(<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>)"
           << R"(<Override PartName="/docProps/app.xml"  ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>)"
           << R"(<Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>)"
           << R"(<Override PartName="/ppt/presProps.xml"   ContentType="application/vnd.openxmlformats-officedocument.presentationml.presProps+xml"/>)"
           << R"(<Override PartName="/ppt/slideMasters/slideMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/>)"
           << R"(<Override PartName="/ppt/slideLayouts/slideLayout1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/>)"
-          << R"(<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>)";
+          << R"(<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>)"
+          << R"(<Override PartName="/ppt/viewProps.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml"/>)"
+          << R"(<Override PartName="/ppt/tableStyles.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml"/>)";
 
         for (int i = 0; i < totalSlides; ++i) {
             o << "<Override PartName=\"/ppt/slides/slide" << (i + 1)
@@ -414,18 +641,35 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
         addTextPart(zip, "docProps/core.xml", o.str());
     }
 
-    // docProps/app.xml
-    {
-        std::ostringstream o;
-        o << R"(<?xml version="1.0" encoding="UTF-8" standalone="yes"?>)"
-          << R"(<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties")"
-          << R"( xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">)"
-          << R"(<Application>SlideShow</Application>)"
-          << "<Slides>" << totalSlides << "</Slides>"
-          << R"(<Notes>0</Notes><HiddenSlides>0</HiddenSlides>)"
-          << R"(</Properties>)";
-        addTextPart(zip, "docProps/app.xml", o.str());
+    
+// docProps/app.xml
+{
+    std::ostringstream o;
+    o << R"(<?xml version="1.0" encoding="UTF-8" standalone="yes"?>)"
+      << R"(<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties")"
+      << R"( xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">)"
+      << R"(<Application>SlideShow</Application>)"
+      << "<Slides>" << totalSlides << "</Slides>"
+      << R"(<Notes>0</Notes><HiddenSlides>0</HiddenSlides>)";
+
+    // A more "Office-like" structure; reduces the chance of PowerPoint showing a repair prompt.
+    o << R"(<HeadingPairs><vt:vector size="2" baseType="variant">)"
+      << R"(<vt:variant><vt:lpstr>Slides</vt:lpstr></vt:variant>)"
+      << "<vt:variant><vt:i4>" << totalSlides << "</vt:i4></vt:variant>"
+      << R"(</vt:vector></HeadingPairs>)";
+
+    o << R"(<TitlesOfParts><vt:vector size=")" << totalSlides << R"(" baseType="lpstr">)";
+    for (int i = 0; i < totalSlides; ++i) {
+        o << "<vt:lpstr>Slide " << (i + 1) << "</vt:lpstr>";
     }
+    o << R"(</vt:vector></TitlesOfParts>)";
+
+    o << R"(<Company/>)"
+      << R"(<AppVersion>16.0000</AppVersion>)"
+      << R"(</Properties>)";
+
+    addTextPart(zip, "docProps/app.xml", o.str());
+}
 
     // ppt/presProps.xml
     {
@@ -435,26 +679,51 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
         addTextPart(zip, "ppt/presProps.xml", o.str());
     }
 
-    // ppt/_rels/presentation.xml.rels
+    
+    // ppt/viewProps.xml
     {
         std::ostringstream o;
-        o << R"(<?xml version="1.0" encoding="UTF-8"?>)"
-          << R"(<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">)"
-          << R"(<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="slideMasters/slideMaster1.xml"/>)"
-          << R"(<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/presProps" Target="presProps.xml"/>)";
-
-        int relId = 3;
-        for (int i = 0; i < totalSlides; ++i) {
-            o << "<Relationship Id=\"rId" << relId++ << "\" "
-              << "Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide\" "
-              << "Target=\"slides/slide" << (i + 1) << ".xml\"/>";
-        }
-
-        o << "</Relationships>";
-        addTextPart(zip, "ppt/_rels/presentation.xml.rels", o.str());
+        o << R"(<?xml version="1.0" encoding="UTF-8" standalone="yes"?>)"
+          << R"(<p:viewPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">)"
+          << R"(<p:normalViewPr><p:restoredLeft sz="15620"/><p:restoredTop sz="94660"/></p:normalViewPr>)"
+          << R"(<p:slideViewPr><p:cSldViewPr><p:cViewPr varScale="1">)"
+          << R"(<p:scale><a:sx n="100" d="100"/><a:sy n="100" d="100"/></p:scale><p:origin x="0" y="0"/>)"
+          << R"(</p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr>)"
+          << R"(<p:outlineViewPr><p:cViewPr varScale="1"><p:scale><a:sx n="100" d="100"/><a:sy n="100" d="100"/></p:scale><p:origin x="0" y="0"/></p:cViewPr></p:outlineViewPr>)"
+          << R"(<p:notesTextViewPr><p:cViewPr varScale="1"><p:scale><a:sx n="100" d="100"/><a:sy n="100" d="100"/></p:scale><p:origin x="0" y="0"/></p:cViewPr></p:notesTextViewPr>)"
+          << R"(<p:gridSpacing cx="720" cy="720"/>)"
+          << R"(</p:viewPr>)";
+        addTextPart(zip, "ppt/viewProps.xml", o.str());
     }
 
-    // ppt/presentation.xml
+    // ppt/tableStyles.xml
+    {
+        std::ostringstream o;
+        o << R"(<?xml version="1.0" encoding="UTF-8" standalone="yes"?>)"
+          << R"(<a:tblStyleLst xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" def="{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}"/>)";
+        addTextPart(zip, "ppt/tableStyles.xml", o.str());
+    }
+
+// ppt/_rels/presentation.xml.rels
+{
+    std::ostringstream o;
+    o << R"(<?xml version="1.0" encoding="UTF-8"?>)"
+      << R"(<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">)"
+      << R"(<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="slideMasters/slideMaster1.xml"/>)"
+      << R"(<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/presProps" Target="presProps.xml"/>)"
+      << R"(<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/viewProps" Target="viewProps.xml"/>)"
+      << R"(<Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/tableStyles" Target="tableStyles.xml"/>)";
+
+    int relId = 5;
+    for (int i = 0; i < totalSlides; ++i) {
+        o << "<Relationship Id=\"rId" << relId++ << "\" "
+          << "Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide\" "
+          << "Target=\"slides/slide" << (i + 1) << ".xml\"/>";
+    }
+
+    o << "</Relationships>";
+    addTextPart(zip, "ppt/_rels/presentation.xml.rels", o.str());
+}// ppt/presentation.xml
     {
         std::ostringstream o;
         o << R"(<?xml version="1.0" encoding="UTF-8"?>)"
@@ -465,7 +734,7 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
         if (totalSlides > 0) {
             o << "<p:sldIdLst>";
             int id = 256;
-            int slideRel = 3;
+            int slideRel = 5;
             for (int i = 0; i < totalSlides; ++i) {
                 o << "<p:sldId id=\"" << id++ << "\" r:id=\"rId" << slideRel++ << "\"/>";
             }
@@ -474,7 +743,8 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
 
         o << "<p:sldSz cx=\"" << kSlideCx << "\" cy=\"" << kSlideCy << "\" type=\"screen16x9\"/>"
           << R"(<p:notesSz cx="6858000" cy="9144000"/>)"
-          << R"(<p:defaultTextStyle/>)"
+                    << R"(<p:tableStyles r:id="rId4"/>)"
+<< R"(<p:defaultTextStyle/>)"
           << R"(</p:presentation>)";
 
         addTextPart(zip, "ppt/presentation.xml", o.str());
@@ -572,28 +842,21 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
             const long long yEmu = pxToEmuY(yPx, kSlideCy);
 
             if (sh.isImage()) {
-                std::string imgName = "image" + std::to_string(globalImageIndex) + ".png";
-                addBinaryPart(zip, "ppt/media/" + imgName, sh.getImageData());
+                ImageFmt fmt = detectImageFormat(sh.getImageData());
+std::string imgName = "image" + std::to_string(globalImageIndex) + "." + imageExt(fmt);
+addBinaryPart(zip, "ppt/media/" + imgName, sh.getImageData());
 
-                int pngW = 0, pngH = 0;
-                if (!parsePngWH(sh.getImageData(), pngW, pngH)) {
-                    pngW = 320;
-                    pngH = 240;
-                }
+int imgW = 0, imgH = 0;
+if (!parseImageWH(sh.getImageData(), imgW, imgH)) {
+    imgW = 320;
+    imgH = 240;
+}
 
-                int drawW = (sh.getW() > 1) ? sh.getW() : pngW;
-                int drawH = (sh.getH() > 1) ? sh.getH() : pngH;
-
-                // If the image is absurdly large, scale it down to fit canvas.
-                if (drawW > kCanvasW || drawH > kCanvasH) {
-                    const double sxF = double(kCanvasW) / double(std::max(1, drawW));
-                    const double syF = double(kCanvasH) / double(std::max(1, drawH));
-                    const double f = std::min(sxF, syF);
-                    drawW = std::max(1, int(std::round(drawW * f)));
-                    drawH = std::max(1, int(std::round(drawH * f)));
-                }
-
-                const long long cxEmu = pxToEmuX(drawW, kSlideCx);
+int drawW = (sh.getW() > 1) ? sh.getW() : imgW;
+int drawH = (sh.getH() > 1) ? sh.getH() : imgH;
+// If the image is absurdly large, scale it down to fit canvas.
+                fitKeepAspect(drawW, drawH, kCanvasW, kCanvasH);
+const long long cxEmu = pxToEmuX(drawW, kSlideCx);
                 const long long cyEmu = pxToEmuY(drawH, kSlideCy);
 
                 sx << "<p:pic>"
@@ -604,7 +867,8 @@ bool PPTXSerializer::save(const std::vector<SlideShow>& slideshows,
                       "</p:nvPicPr>"
                       "<p:blipFill>"
                         "<a:blip r:embed=\"rId" << localRelId << "\"/>"
-                        "<a:stretch><a:fillRect/></a:stretch>"
+                        << ((sh.getCropL()|sh.getCropT()|sh.getCropR()|sh.getCropB()) ? std::string("<a:srcRect l=\"") + std::to_string(sh.getCropL()) + "\" t=\"" + std::to_string(sh.getCropT()) + "\" r=\"" + std::to_string(sh.getCropR()) + "\" b=\"" + std::to_string(sh.getCropB()) + "\"/>" : std::string(""))
+                        << "<a:stretch><a:fillRect/></a:stretch>"
                       "</p:blipFill>"
                       "<p:spPr>"
                         "<a:xfrm>"
@@ -719,6 +983,8 @@ bool PPTXSerializer::load(std::vector<SlideShow>& slideshows,
         if (slideCx <= 0) slideCx = kSlideCx;
         if (slideCy <= 0) slideCy = kSlideCy;
     }
+    CanvasMap map = CanvasMap::fromSlide(slideCx, slideCy);
+
 
     int slideNum = 1;
     while (true) {
@@ -762,10 +1028,10 @@ bool PPTXSerializer::load(std::vector<SlideShow>& slideshows,
             extractOffXYEmu(block, xEmu, yEmu);
             extractExtWHEmu(block, wEmu, hEmu);
 
-            const int x = emuToPxX(xEmu, slideCx);
-            const int y = emuToPxY(yEmu, slideCy);
-            const int w = (wEmu > 0) ? emuToPxX(wEmu, slideCx) : 0;
-            const int h = (hEmu > 0) ? emuToPxY(hEmu, slideCy) : 0;
+            const int x = map.x(xEmu);
+            const int y = map.y(yEmu);
+            const int w = (wEmu > 0) ? map.w(wEmu) : 0;
+            const int h = (hEmu > 0) ? map.h(hEmu) : 0;
 
             if (isImage) {
                 // Map rId -> ppt/media/file
@@ -798,7 +1064,11 @@ bool PPTXSerializer::load(std::vector<SlideShow>& slideshows,
                 zip_fread(f, data.data(), ist.size);
                 zip_fclose(f);
 
+                int cl = 0, ct = 0, cr = 0, cb = 0;
+                extractSrcRectPct(block, cl, ct, cr, cb);
+
                 Shape img("Image", x, y, std::move(data));
+                img.setCrop(cl, ct, cr, cb);
                 if (w > 0) img.setW(w);
                 if (h > 0) img.setH(h);
                 slide.addShape(std::move(img));

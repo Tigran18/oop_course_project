@@ -26,16 +26,29 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_MainWindow_t {
+<<<<<<< HEAD
     uint offsetsAndSizes[58];
+=======
+    uint offsetsAndSizes[50];
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     char stringdata0[11];
     char stringdata1[20];
     char stringdata2[1];
+<<<<<<< HEAD
     char stringdata3[23];
     char stringdata4[11];
     char stringdata5[11];
     char stringdata6[17];
     char stringdata7[14];
     char stringdata8[6];
+=======
+    char stringdata3[14];
+    char stringdata4[6];
+    char stringdata5[13];
+    char stringdata6[4];
+    char stringdata7[2];
+    char stringdata8[2];
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     char stringdata9[16];
     char stringdata10[9];
     char stringdata11[11];
@@ -50,18 +63,24 @@ struct qt_meta_stringdata_MainWindow_t {
     char stringdata20[9];
     char stringdata21[6];
     char stringdata22[16];
+<<<<<<< HEAD
     char stringdata23[4];
     char stringdata24[19];
     char stringdata25[21];
     char stringdata26[13];
     char stringdata27[2];
     char stringdata28[2];
+=======
+    char stringdata23[19];
+    char stringdata24[21];
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
 Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
         QT_MOC_LITERAL(0, 10),  // "MainWindow"
+<<<<<<< HEAD
         QT_MOC_LITERAL(11, 19),  // "deleteSelectedShape"
         QT_MOC_LITERAL(31, 0),  // ""
         QT_MOC_LITERAL(32, 22),  // "duplicateSelectedShape"
@@ -90,6 +109,32 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(329, 12),  // "onShapeMoved"
         QT_MOC_LITERAL(342, 1),  // "x"
         QT_MOC_LITERAL(344, 1)   // "y"
+=======
+        QT_MOC_LITERAL(11, 16),  // "onCommandEntered"
+        QT_MOC_LITERAL(28, 0),  // ""
+        QT_MOC_LITERAL(29, 13),  // "onSlideChosen"
+        QT_MOC_LITERAL(43, 5),  // "index"
+        QT_MOC_LITERAL(49, 12),  // "onShapeMoved"
+        QT_MOC_LITERAL(62, 3),  // "idx"
+        QT_MOC_LITERAL(66, 1),  // "x"
+        QT_MOC_LITERAL(68, 1),  // "y"
+        QT_MOC_LITERAL(70, 15),  // "newPresentation"
+        QT_MOC_LITERAL(86, 8),  // "openPptx"
+        QT_MOC_LITERAL(95, 10),  // "saveAsPptx"
+        QT_MOC_LITERAL(106, 11),  // "addNewSlide"
+        QT_MOC_LITERAL(118, 12),  // "addTextShape"
+        QT_MOC_LITERAL(131, 12),  // "addRectShape"
+        QT_MOC_LITERAL(144, 15),  // "addEllipseShape"
+        QT_MOC_LITERAL(160, 13),  // "addImageShape"
+        QT_MOC_LITERAL(174, 14),  // "toggleDarkMode"
+        QT_MOC_LITERAL(189, 7),  // "enabled"
+        QT_MOC_LITERAL(197, 12),  // "openSettings"
+        QT_MOC_LITERAL(210, 8),  // "showHelp"
+        QT_MOC_LITERAL(219, 5),  // "about"
+        QT_MOC_LITERAL(225, 15),  // "onShapeSelected"
+        QT_MOC_LITERAL(241, 18),  // "onSelectionCleared"
+        QT_MOC_LITERAL(260, 20)   // "applyShapeProperties"
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     },
     "MainWindow",
     "deleteSelectedShape",
@@ -100,6 +145,10 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
     "onCommandEntered",
     "onSlideChosen",
     "index",
+    "onShapeMoved",
+    "idx",
+    "x",
+    "y",
     "newPresentation",
     "openPptx",
     "saveAsPptx",
@@ -114,12 +163,17 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
     "showHelp",
     "about",
     "onShapeSelected",
+<<<<<<< HEAD
     "idx",
     "onSelectionCleared",
     "applyShapeProperties",
     "onShapeMoved",
     "x",
     "y"
+=======
+    "onSelectionCleared",
+    "applyShapeProperties"
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -130,7 +184,11 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
+<<<<<<< HEAD
       22,   14, // methods
+=======
+      18,   14, // methods
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -138,6 +196,7 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
+<<<<<<< HEAD
        1,    0,  146,    2, 0x08,    1 /* Private */,
        3,    0,  147,    2, 0x08,    2 /* Private */,
        4,    0,  148,    2, 0x08,    3 /* Private */,
@@ -168,6 +227,31 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    8,
+=======
+       1,    0,  122,    2, 0x08,    1 /* Private */,
+       3,    1,  123,    2, 0x08,    2 /* Private */,
+       5,    3,  126,    2, 0x08,    4 /* Private */,
+       9,    0,  133,    2, 0x08,    8 /* Private */,
+      10,    0,  134,    2, 0x08,    9 /* Private */,
+      11,    0,  135,    2, 0x08,   10 /* Private */,
+      12,    0,  136,    2, 0x08,   11 /* Private */,
+      13,    0,  137,    2, 0x08,   12 /* Private */,
+      14,    0,  138,    2, 0x08,   13 /* Private */,
+      15,    0,  139,    2, 0x08,   14 /* Private */,
+      16,    0,  140,    2, 0x08,   15 /* Private */,
+      17,    1,  141,    2, 0x08,   16 /* Private */,
+      19,    0,  144,    2, 0x08,   18 /* Private */,
+      20,    0,  145,    2, 0x08,   19 /* Private */,
+      21,    0,  146,    2, 0x08,   20 /* Private */,
+      22,    1,  147,    2, 0x08,   21 /* Private */,
+      23,    0,  150,    2, 0x08,   23 /* Private */,
+      24,    0,  151,    2, 0x08,   24 /* Private */,
+
+ // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,    6,    7,    8,
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -175,9 +259,17 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+<<<<<<< HEAD
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   18,
+=======
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   18,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   23,
@@ -210,6 +302,11 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onSlideChosen'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'onShapeMoved'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'newPresentation'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'openPptx'
@@ -241,12 +338,16 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onSelectionCleared'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'applyShapeProperties'
+<<<<<<< HEAD
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onShapeMoved'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>
+=======
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     >,
     nullptr
 } };
@@ -257,6 +358,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
+<<<<<<< HEAD
         case 0: _t->deleteSelectedShape(); break;
         case 1: _t->duplicateSelectedShape(); break;
         case 2: _t->undoAction(); break;
@@ -279,6 +381,26 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 19: _t->onSelectionCleared(); break;
         case 20: _t->applyShapeProperties(); break;
         case 21: _t->onShapeMoved((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
+=======
+        case 0: _t->onCommandEntered(); break;
+        case 1: _t->onSlideChosen((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->onShapeMoved((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
+        case 3: _t->newPresentation(); break;
+        case 4: _t->openPptx(); break;
+        case 5: _t->saveAsPptx(); break;
+        case 6: _t->addNewSlide(); break;
+        case 7: _t->addTextShape(); break;
+        case 8: _t->addRectShape(); break;
+        case 9: _t->addEllipseShape(); break;
+        case 10: _t->addImageShape(); break;
+        case 11: _t->toggleDarkMode((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 12: _t->openSettings(); break;
+        case 13: _t->showHelp(); break;
+        case 14: _t->about(); break;
+        case 15: _t->onShapeSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 16: _t->onSelectionCleared(); break;
+        case 17: _t->applyShapeProperties(); break;
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
         default: ;
         }
     }
@@ -303,6 +425,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
+<<<<<<< HEAD
         if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
         _id -= 22;
@@ -310,6 +433,15 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         if (_id < 22)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
         _id -= 22;
+=======
+        if (_id < 18)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 18;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 18)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 18;
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
     }
     return _id;
 }

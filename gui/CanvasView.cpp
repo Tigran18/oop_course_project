@@ -17,6 +17,7 @@
 #include <QFont>
 #include <QPalette>
 #include <cmath>
+#include <algorithm>
 
 namespace {
 constexpr int kSlideW = 960;
@@ -229,7 +230,32 @@ void CanvasView::renderSlide(const ::Slide& slide)
                 continue;
             }
 
-            int targetW = (sh.getW() > 1) ? sh.getW() : img.width();
+            
+            // Apply PPTX-style crop (a:srcRect). Values are 0..100000 (1/1000 of a percent).
+            const int cl = sh.getCropL();
+            const int ct = sh.getCropT();
+            const int cr = sh.getCropR();
+            const int cb = sh.getCropB();
+            if ((cl | ct | cr | cb) != 0) {
+                const int W = img.width();
+                const int H = img.height();
+
+                int x0 = (int)std::round((double)cl * (double)W / 100000.0);
+                int y0 = (int)std::round((double)ct * (double)H / 100000.0);
+                int x1 = W - (int)std::round((double)cr * (double)W / 100000.0);
+                int y1 = H - (int)std::round((double)cb * (double)H / 100000.0);
+
+                x0 = std::clamp(x0, 0, W);
+                y0 = std::clamp(y0, 0, H);
+                x1 = std::clamp(x1, 0, W);
+                y1 = std::clamp(y1, 0, H);
+
+                int cw = std::max(1, x1 - x0);
+                int ch = std::max(1, y1 - y0);
+                img = img.copy(x0, y0, cw, ch);
+            }
+
+int targetW = (sh.getW() > 1) ? sh.getW() : img.width();
             int targetH = (sh.getH() > 1) ? sh.getH() : img.height();
             if (targetW <= 0) targetW = 1;
             if (targetH <= 0) targetH = 1;
@@ -247,7 +273,7 @@ void CanvasView::renderSlide(const ::Slide& slide)
 
             QPixmap pm = QPixmap::fromImage(img);
             if (pm.width() != targetW || pm.height() != targetH) {
-                pm = pm.scaled(targetW, targetH, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                pm = pm.scaled(targetW, targetH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             }
 
             auto* item = new TaggedPixmapItem(i, pm, this);

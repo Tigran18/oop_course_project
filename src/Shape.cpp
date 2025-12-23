@@ -158,3 +158,28 @@ ShapeKind Shape::kind() const { return kind_; }
 
 const std::vector<uint8_t>& Shape::getImageData() const { return imageData_; }
 bool Shape::isImage() const { return kind_ == ShapeKind::Image; }
+
+static int clampCropPct(int v)
+{
+    if (v < 0) return 0;
+    if (v > 100000) return 100000;
+    return v;
+}
+
+int Shape::getCropL() const { return cropL_; }
+int Shape::getCropT() const { return cropT_; }
+int Shape::getCropR() const { return cropR_; }
+int Shape::getCropB() const { return cropB_; }
+
+void Shape::setCrop(int l, int t, int r, int b)
+{
+    cropL_ = clampCropPct(l);
+    cropT_ = clampCropPct(t);
+    cropR_ = clampCropPct(r);
+    cropB_ = clampCropPct(b);
+
+    // Prevent invalid crop that removes the whole image.
+    if (cropL_ + cropR_ > 99999) cropR_ = std::max(0, 99999 - cropL_);
+    if (cropT_ + cropB_ > 99999) cropB_ = std::max(0, 99999 - cropT_);
+}
+

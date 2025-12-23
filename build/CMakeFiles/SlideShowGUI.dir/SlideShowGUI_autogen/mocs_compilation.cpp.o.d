@@ -389,6 +389,11 @@ CMakeFiles/SlideShowGUI.dir/SlideShowGUI_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
+<<<<<<< HEAD
+=======
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
  /home/tigranda35/Desktop/dir_projects/oop_course_project/build/SlideShowGUI_autogen/DMHXEJ42XS/moc_MainWindow.cpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/build/SlideShowGUI_autogen/DMHXEJ42XS/../../../gui/MainWindow.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \

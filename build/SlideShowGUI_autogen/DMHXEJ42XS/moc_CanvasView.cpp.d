@@ -283,6 +283,10 @@
   /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+<<<<<<< HEAD
+=======
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \

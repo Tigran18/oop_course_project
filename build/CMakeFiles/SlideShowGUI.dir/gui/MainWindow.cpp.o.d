@@ -410,6 +410,11 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgraphicsscene.h \
+<<<<<<< HEAD
+=======
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QPointF \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
  /home/tigranda35/Desktop/dir_projects/oop_course_project/gui/QtLogStream.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
@@ -418,10 +423,13 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/gui/SettingsDialog.hpp \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QDialog \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
+<<<<<<< HEAD
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
+=======
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
@@ -509,10 +517,13 @@ CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPalette \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
+<<<<<<< HEAD
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QImage \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QKeySequence \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
+=======
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
  /usr/include/c++/13/iostream \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/Controller.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/include/SlideShow.hpp \

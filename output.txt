@@ -1,0 +1,243 @@
+.
+├── ./AutoExport.pptx
+├── ./CMakeLists.txt
+├── ./README.md
+├── ./build
+│   ├── ./build/CMakeCache.txt
+│   ├── ./build/CMakeFiles
+│   │   ├── ./build/CMakeFiles/4.2.1
+│   │   │   ├── ./build/CMakeFiles/4.2.1/CMakeCXXCompiler.cmake
+│   │   │   ├── ./build/CMakeFiles/4.2.1/CMakeDetermineCompilerABI_CXX.bin
+│   │   │   ├── ./build/CMakeFiles/4.2.1/CMakeSystem.cmake
+│   │   │   └── ./build/CMakeFiles/4.2.1/CompilerIdCXX
+│   │   │       ├── ./build/CMakeFiles/4.2.1/CompilerIdCXX/CMakeCXXCompilerId.cpp
+│   │   │       ├── ./build/CMakeFiles/4.2.1/CompilerIdCXX/a.out
+│   │   │       └── ./build/CMakeFiles/4.2.1/CompilerIdCXX/tmp
+│   │   ├── ./build/CMakeFiles/CMakeConfigureLog.yaml
+│   │   ├── ./build/CMakeFiles/CMakeDirectoryInformation.cmake
+│   │   ├── ./build/CMakeFiles/CMakeRuleHashes.txt
+│   │   ├── ./build/CMakeFiles/CMakeScratch
+│   │   ├── ./build/CMakeFiles/InstallScripts.json
+│   │   ├── ./build/CMakeFiles/Makefile.cmake
+│   │   ├── ./build/CMakeFiles/Makefile2
+│   │   ├── ./build/CMakeFiles/SlideShowCLI.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/SlideShowCLI_autogen
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/SlideShowCLI_autogen/mocs_compilation.cpp.o
+│   │   │   │   └── ./build/CMakeFiles/SlideShowCLI.dir/SlideShowCLI_autogen/mocs_compilation.cpp.o.d
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/compiler_depend.ts
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/flags.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/link.d
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/link.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI.dir/progress.make
+│   │   │   └── ./build/CMakeFiles/SlideShowCLI.dir/src
+│   │   │       ├── ./build/CMakeFiles/SlideShowCLI.dir/src/main.cpp.o
+│   │   │       └── ./build/CMakeFiles/SlideShowCLI.dir/src/main.cpp.o.d
+│   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/AutogenInfo.json
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/AutogenUsed.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/ParseCache.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/SlideShowCLI_autogen.dir/progress.make
+│   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/SlideShowCLI_autogen_timestamp_deps.dir/progress.make
+│   │   ├── ./build/CMakeFiles/SlideShowGUI.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/SlideShowGUI_autogen
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/SlideShowGUI_autogen/mocs_compilation.cpp.o
+│   │   │   │   └── ./build/CMakeFiles/SlideShowGUI.dir/SlideShowGUI_autogen/mocs_compilation.cpp.o.d
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/compiler_depend.ts
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/flags.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/CanvasView.cpp.o
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/CanvasView.cpp.o.d
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/MainWindow.cpp.o.d
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/QtLogStream.cpp.o
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/QtLogStream.cpp.o.d
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/SettingsDialog.cpp.o
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/SettingsDialog.cpp.o.d
+│   │   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/gui/SlideList.cpp.o
+│   │   │   │   └── ./build/CMakeFiles/SlideShowGUI.dir/gui/SlideList.cpp.o.d
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/link.d
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/link.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/progress.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI.dir/qt_main.cpp.o
+│   │   │   └── ./build/CMakeFiles/SlideShowGUI.dir/qt_main.cpp.o.d
+│   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/AutogenInfo.json
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/AutogenUsed.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/ParseCache.txt
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/SlideShowGUI_autogen.dir/progress.make
+│   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/SlideShowGUI_autogen_timestamp_deps.dir/progress.make
+│   │   ├── ./build/CMakeFiles/TargetDirectories.txt
+│   │   ├── ./build/CMakeFiles/cmake.check_cache
+│   │   ├── ./build/CMakeFiles/core.dir
+│   │   │   ├── ./build/CMakeFiles/core.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/core.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/core.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/core.dir/cmake_clean_target.cmake
+│   │   │   ├── ./build/CMakeFiles/core.dir/compiler_depend.internal
+│   │   │   ├── ./build/CMakeFiles/core.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/core.dir/compiler_depend.ts
+│   │   │   ├── ./build/CMakeFiles/core.dir/core_autogen
+│   │   │   │   ├── ./build/CMakeFiles/core.dir/core_autogen/mocs_compilation.cpp.o
+│   │   │   │   └── ./build/CMakeFiles/core.dir/core_autogen/mocs_compilation.cpp.o.d
+│   │   │   ├── ./build/CMakeFiles/core.dir/depend.make
+│   │   │   ├── ./build/CMakeFiles/core.dir/flags.make
+│   │   │   ├── ./build/CMakeFiles/core.dir/link.txt
+│   │   │   ├── ./build/CMakeFiles/core.dir/progress.make
+│   │   │   └── ./build/CMakeFiles/core.dir/src
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/CommandParser.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/CommandParser.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Commands.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Commands.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Controller.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Controller.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/ICommand.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/ICommand.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/PPTXSerializer.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/PPTXSerializer.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Shape.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Shape.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Slide.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Slide.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/SlideShow.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/SlideShow.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Token.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Token.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Tokenizer.cpp.o
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/Tokenizer.cpp.o.d
+│   │   │       ├── ./build/CMakeFiles/core.dir/src/lodepng.cpp.o
+│   │   │       └── ./build/CMakeFiles/core.dir/src/lodepng.cpp.o.d
+│   │   ├── ./build/CMakeFiles/core_autogen.dir
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/AutogenInfo.json
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/AutogenUsed.txt
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/ParseCache.txt
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/compiler_depend.internal
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/core_autogen.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/core_autogen.dir/progress.make
+│   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir
+│   │   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/DependInfo.cmake
+│   │   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/build.make
+│   │   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/cmake_clean.cmake
+│   │   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/compiler_depend.make
+│   │   │   ├── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/compiler_depend.ts
+│   │   │   └── ./build/CMakeFiles/core_autogen_timestamp_deps.dir/progress.make
+│   │   ├── ./build/CMakeFiles/pkgRedirects
+│   │   └── ./build/CMakeFiles/progress.marks
+│   ├── ./build/Makefile
+│   ├── ./build/SlideShowCLI
+│   ├── ./build/SlideShowCLI_autogen
+│   │   ├── ./build/SlideShowCLI_autogen/deps
+│   │   ├── ./build/SlideShowCLI_autogen/include
+│   │   ├── ./build/SlideShowCLI_autogen/moc_predefs.h
+│   │   ├── ./build/SlideShowCLI_autogen/mocs_compilation.cpp
+│   │   └── ./build/SlideShowCLI_autogen/timestamp
+│   ├── ./build/SlideShowGUI
+│   ├── ./build/SlideShowGUI_autogen
+│   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_CanvasView.cpp
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_CanvasView.cpp.d
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_MainWindow.cpp
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_MainWindow.cpp.d
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_QtLogStream.cpp
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_QtLogStream.cpp.d
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_SettingsDialog.cpp
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_SettingsDialog.cpp.d
+│   │   │   ├── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_SlideList.cpp
+│   │   │   └── ./build/SlideShowGUI_autogen/DMHXEJ42XS/moc_SlideList.cpp.d
+│   │   ├── ./build/SlideShowGUI_autogen/deps
+│   │   ├── ./build/SlideShowGUI_autogen/include
+│   │   ├── ./build/SlideShowGUI_autogen/moc_predefs.h
+│   │   ├── ./build/SlideShowGUI_autogen/mocs_compilation.cpp
+│   │   └── ./build/SlideShowGUI_autogen/timestamp
+│   ├── ./build/cmake_install.cmake
+│   ├── ./build/core_autogen
+│   │   ├── ./build/core_autogen/deps
+│   │   ├── ./build/core_autogen/include
+│   │   ├── ./build/core_autogen/moc_predefs.h
+│   │   ├── ./build/core_autogen/mocs_compilation.cpp
+│   │   └── ./build/core_autogen/timestamp
+│   └── ./build/libcore.a
+├── ./build-asan
+├── ./gui
+│   ├── ./gui/CanvasView.cpp
+│   ├── ./gui/CanvasView.hpp
+│   ├── ./gui/CanvasWidget.cpp
+│   ├── ./gui/CanvasWidget.hpp
+│   ├── ./gui/MainWindow.cpp
+│   ├── ./gui/MainWindow.hpp
+│   ├── ./gui/QtLogStream.cpp
+│   ├── ./gui/QtLogStream.hpp
+│   ├── ./gui/SettingsDialog.cpp
+│   ├── ./gui/SettingsDialog.hpp
+│   ├── ./gui/SlideList.cpp
+│   └── ./gui/SlideList.hpp
+├── ./include
+│   ├── ./include/Color.hpp
+│   ├── ./include/CommandParser.hpp
+│   ├── ./include/Commands.hpp
+│   ├── ./include/Controller.hpp
+│   ├── ./include/Functions.hpp
+│   ├── ./include/ICommand.hpp
+│   ├── ./include/PPTXSerializer.hpp
+│   ├── ./include/Shape.hpp
+│   ├── ./include/Slide.hpp
+│   ├── ./include/SlideShow.hpp
+│   ├── ./include/Token.hpp
+│   ├── ./include/Tokenizer.hpp
+│   ├── ./include/lodepng.h
+│   └── ./include/stb_image.h
+├── ./oop_course_project.code-workspace
+├── ./output.txt
+├── ./qt_main.cpp
+├── ./script.sh
+├── ./src
+│   ├── ./src/CommandParser.cpp
+│   ├── ./src/Commands.cpp
+│   ├── ./src/Controller.cpp
+│   ├── ./src/ICommand.cpp
+│   ├── ./src/PPTXSerializer.cpp
+│   ├── ./src/Shape.cpp
+│   ├── ./src/Slide.cpp
+│   ├── ./src/SlideShow.cpp
+│   ├── ./src/Token.cpp
+│   ├── ./src/Tokenizer.cpp
+│   ├── ./src/lodepng.cpp
+│   └── ./src/main.cpp
+└── ./test.pptx
+
+34 directories, 207 files

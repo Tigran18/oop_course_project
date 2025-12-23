@@ -212,14 +212,48 @@ CMakeFiles/core.dir/src/CommandParser.cpp.o: \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
+<<<<<<< HEAD
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Tokenizer.hpp \
  /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Token.hpp \
  /usr/include/c++/13/variant \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
+=======
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Functions.hpp \
+ /usr/include/c++/13/iostream /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h \
  /usr/include/c++/13/bits/ranges_algo.h \
+<<<<<<< HEAD
  /usr/include/c++/13/pstl/glue_algorithm_defs.h
+=======
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/PPTXSerializer.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Color.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/lodepng.h \
+ /usr/include/string.h /usr/include/strings.h /usr/include/c++/13/fstream \
+ /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/filesystem \
+ /usr/include/c++/13/bits/fs_fwd.h /usr/include/c++/13/bits/chrono.h \
+ /usr/include/c++/13/ratio /usr/include/c++/13/limits \
+ /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Tokenizer.hpp \
+ /home/tigranda35/Desktop/dir_projects/oop_course_project/src/../include/Token.hpp \
+ /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/enable_special_members.h
+>>>>>>> e917d81b1a2db14e4950830d7127ac240a504998

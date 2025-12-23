@@ -24,7 +24,14 @@ private:
     int h_ = 80;
 
     std::vector<uint8_t> imageData_;
-    ShapeKind kind_ = ShapeKind::Text;
+    
+    // PowerPoint picture crop (DrawingML a:srcRect). Units are 1/1000 of a percent (0..100000).
+    int cropL_ = 0;
+    int cropT_ = 0;
+    int cropR_ = 0;
+    int cropB_ = 0;
+
+ShapeKind kind_ = ShapeKind::Text;
 
 private:
     void parseSpecialSyntax(const std::string& raw);
@@ -51,5 +58,11 @@ public:
     ShapeKind kind() const;
 
     const std::vector<uint8_t>& getImageData() const;
-    bool isImage() const;
+    
+    int getCropL() const;
+    int getCropT() const;
+    int getCropR() const;
+    int getCropB() const;
+    void setCrop(int l, int t, int r, int b);
+bool isImage() const;
 };
